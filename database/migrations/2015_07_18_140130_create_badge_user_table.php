@@ -19,6 +19,11 @@ class CreateBadgeUserTable extends Migration
             $table->integer('gameweek_id')->unsigned();
 
             $table->timestamps();
+
+            $table->foreign('badge_id')->references('id')->on('badges');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('gameweek_id')->references('id')->on('gameweeks');
+
         });
     }
 
