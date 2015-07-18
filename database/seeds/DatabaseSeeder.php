@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
          $this->call(MonthTableSeeder::class);
          $this->call(GameweekTableSeeder::class);
          $this->call(FixtureTableSeeder::class);
+         $this->call(BadgeTableSeeder::class);
+         $this->call(BadgeUserTableSeeder::class);
 
         Model::reguard();
     }

@@ -21,6 +21,8 @@ class AuthController extends Controller
     |
     */
 
+    protected $redirectPath = '/predict';
+
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
