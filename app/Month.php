@@ -8,5 +8,5 @@ class Month extends Model
 {
         protected $table='months';
 
-        protected $fillable=['name','winner_user_id'];
+        protected $guarded=[];
 }

@@ -8,5 +8,6 @@ class Score extends Model
 {
         protected $table='scores';
 
-        protected $fillable=['val','user_id','gameweek_id'];
+        protected $guarded=[];
+
 }

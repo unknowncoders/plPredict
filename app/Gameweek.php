@@ -8,5 +8,5 @@ class Gameweek extends Model
 {
         protected $table='gameweeks';
 
-        protected $fillable=['month_id','status'];
+        protected $guarded=[];
 }

@@ -8,4 +8,5 @@ class Prediction extends Model
 {
         protected $table='predictions';
 
+        protected $guarded=[];
 }

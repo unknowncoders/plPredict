@@ -8,5 +8,5 @@ class Pic extends Model
 {
         protected $table='pics';
 
-        protected $fillable=['name'];
+        protected $guarded=[];
 }

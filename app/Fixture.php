@@ -8,5 +8,6 @@ class Fixture extends Model
 {
         protected $table='fixtures';
 
+        protected $guarded=[];
 
 }
