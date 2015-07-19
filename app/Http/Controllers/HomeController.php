@@ -23,9 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-            return 'Start predicting';
-
+               return view('pages.home'); 
     }
 
 }
