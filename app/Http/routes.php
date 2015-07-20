@@ -16,7 +16,19 @@ Route::get('predict','HomeController@index');
 
 
 //Authentication routes
-Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', 'Auth\AuthController@postLogin');
+
+Route::group(['middleware'=>'guest'],function(){
+
+        Route::get('login', 'Auth\AuthController@getLogin');
+        Route::post('login', 'Auth\AuthController@postLogin');
+        Route::get('login/{provider?}','Auth\AuthController@login');
+
+});
+
 Route::get('logout', 'Auth\AuthController@getLogout');
+
+//Route::get('auth/facebook','Auth\AuthController@redirectToProvider');
+//Route::get('auth/facebook/callback','Auth\AuthController@handleProviderCallback');
+
+
 
