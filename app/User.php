@@ -56,4 +56,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return $this->belongsToMany('App\Badge','badge_user','user_id','badge_id');
     }
 
+
 }

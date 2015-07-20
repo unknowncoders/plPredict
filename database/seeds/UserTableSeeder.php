@@ -47,6 +47,17 @@ class UserTableSeeder extends Seeder
                          'pic_id'=>1,
                          'score'=>0,
                         ],
+                        ['name'=>'Dummy User',
+                         'email'=>'dumb@gmail.com',
+                         'username'=>null,
+                         'password'=>Hash::make('randomstr'),
+                         'status'=>0,
+                         'provider'=>'facebook',
+                         'provider_id'=>'1028607243830640',
+                         'club_id'=>null,
+                         'pic_id'=>1,
+                         'score'=>0,
+                        ],
                     ]);
 
 

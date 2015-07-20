@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
 
             // Can be 0, 1 or 2
+            // 0 = registered user but no username, no password
+            // 1 = registered user with username, no password
+            // 2 = registered user with username and password
             $table->tinyInteger('status')->default(0); 
 
             $table->string('provider');

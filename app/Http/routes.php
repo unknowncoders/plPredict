@@ -15,20 +15,17 @@ Route::get('/','HomeController@index');
 Route::get('predict','HomeController@index');
 
 
-//Authentication routes
-
-Route::group(['middleware'=>'guest'],function(){
-
+    //Authentication routes
         Route::get('login', 'Auth\AuthController@getLogin');
         Route::post('login', 'Auth\AuthController@postLogin');
         Route::get('login/{provider?}','Auth\AuthController@login');
 
-});
+    // For Users with incomplete registration
+        Route::get('complete','UserController@getComplete');
+        Route::post('complete','UserController@postComplete');
 
 Route::get('logout', 'Auth\AuthController@getLogout');
 
-//Route::get('auth/facebook','Auth\AuthController@redirectToProvider');
-//Route::get('auth/facebook/callback','Auth\AuthController@handleProviderCallback');
 
 
 

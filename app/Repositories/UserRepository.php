@@ -10,6 +10,8 @@ class UserRepository
         {
                 $user = User::where('email','=',$userData->email)->first();
 
+                //TODO Replace randomstr with a real random string
+
                 if(!$user){
                         $user = User::create([
                                 'name'=>$userData->name,
