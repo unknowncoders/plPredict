@@ -33,5 +33,7 @@
                 @endforeach
             @endif
 
+            <a href='/login/facebook'>Login with facebook</a>
+
 @stop
     
