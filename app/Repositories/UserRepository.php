@@ -12,7 +12,6 @@ class UserRepository
 
                 //TODO Replace randomstr with a real random string
                 //
-                dd($userData);
 
                 if(!$user){
                         $user = User::create([
