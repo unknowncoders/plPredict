@@ -15,7 +15,7 @@ Route::get('/','HomeController@index');
 Route::get('predict','HomeController@index');
 
 Route::get('badges','BadgeController@index');
-Route::get('standing','UserController@index');
+Route::get('standings','UserController@index');
 Route::get('faq','PagesController@faq');
 Route::get('rules','PagesController@rules');
 Route::get('settings','UserController@getSetting');
