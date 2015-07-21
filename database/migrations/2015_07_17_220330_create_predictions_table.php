@@ -18,8 +18,8 @@ class CreatePredictionsTable extends Migration
             $table->integer('fixture_id')->unsigned();
             $table->tinyInteger('home_score')->nullable();
             $table->tinyInteger('away_score')->nullable();
-            $table->boolean('boost_up');
-            $table->tinyInteger('points');
+            $table->boolean('boost_up')->default(false);
+            $table->tinyInteger('points')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

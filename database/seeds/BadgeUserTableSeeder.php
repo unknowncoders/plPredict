@@ -15,6 +15,8 @@ class BadgeUserTableSeeder extends Seeder
 
             DB::table('badge_user')->insert([
                         ["badge_id"=>1,"user_id"=>1,"gameweek_id"=>1],
+                        ["badge_id"=>1,"user_id"=>2,"gameweek_id"=>1],
+                        ["badge_id"=>1,"user_id"=>3,"gameweek_id"=>1],
                     ]);
     
     }

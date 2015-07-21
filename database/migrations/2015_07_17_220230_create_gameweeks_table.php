@@ -15,7 +15,7 @@ class CreateGameweeksTable extends Migration
         Schema::create('gameweeks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('month_id')->unsigned();
-            $table->boolean('status')->default(false);
+            $table->boolean('complete')->default(false);
             $table->timestamps();
 
             $table->foreign('month_id')->references('id')->on('months');

@@ -28,7 +28,6 @@ class CreateUsersTable extends Migration
             $table->string('provider');
             $table->string('provider_id')->unique();
             $table->integer('club_id')->unsigned()->nullable();
-            $table->integer('pic_id')->unsigned()->default(1);
             $table->timestamp('last_login')->nullable();
             $table->integer('score')->unsigned()->default(0);
 
@@ -36,7 +35,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->foreign('club_id')->references('id')->on('clubs');
-            $table->foreign('pic_id')->references('id')->on('pics');
         });
     }
 
