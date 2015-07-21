@@ -15,6 +15,10 @@ class UserController extends Controller
                 $this->middleware('incomplete',['only'=>['getComplete','postComplete']]);
         }
 
+        public function show(\App\User $user){
+            return $user;
+        }
+
         public function getComplete(){
 
                 $clubs = \App\Club::lists('name','id')->toArray();
