@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\AuthenticateUser;
 use Validator;
+use Socialite;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -67,4 +70,28 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /*
+    public function redirectToProvider(){
+
+            return Socialite::driver('facebook')->redirect();
+
+    }
+
+    public function handleProviderCallback(){
+
+            $user = Socialite::driver('facebook')->user();
+
+            dd($user);
+
+    }
+     */
+
+    public function login(AuthenticateUser $authenticateUser, Request $request, $provider=null){
+
+            return $authenticateUser->execute($request->all(),$this,$provider);
+
+    }
+
+
 }
