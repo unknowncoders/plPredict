@@ -11,14 +11,17 @@ class UserController extends Controller
 {
 
         public function __construct(){
-                $this->middleware('auth');
+                $this->middleware('auth',['except'=>'show']);
                 $this->middleware('incomplete',['only'=>['getComplete','postComplete']]);
+        }
+
+        public function show(\App\User $user){
+                return view('users.show',compact('user'));
         }
 
         public function getComplete(){
 
                 $clubs = \App\Club::lists('name','id')->toArray();
-
 
                 $clubs = array_merge([null=>'-- Favorite club --'],$clubs);
 
