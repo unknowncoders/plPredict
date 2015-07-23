@@ -14,12 +14,12 @@ class PicTableSeeder extends Seeder
             DB::table('pics')->delete();
 
             DB::table('pics')->insert([
-                        ["name"=>"default.jpg"],
-                        ["name"=>"red.jpg"],
-                        ["name"=>"blue.jpg"],
-                        ["name"=>"white.jpg"],
-                        ["name"=>"arsenal.jpg"],
-                        ["name"=>"astonvilla.jpg"],
+                        ["path"=>"default.jpg"],
+                        ["path"=>"red.jpg"],
+                        ["path"=>"blue.jpg"],
+                        ["path"=>"white.jpg"],
+                        ["path"=>"arsenal.jpg"],
+                        ["path"=>"astonvilla.jpg"],
                     ]);
 
 

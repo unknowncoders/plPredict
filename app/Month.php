@@ -14,7 +14,7 @@ class Month extends Model
             return $this->hasMany('App\Gameweek');
         }
 
-        public function winner(){
-                return $this->belongsTo('App\User','winner_user_id');
+        public function users(){
+                return $this->belongsToMany('App\User','month_user');
         }
 }
