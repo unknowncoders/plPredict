@@ -41,7 +41,9 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     private function composeProfileBox(){
             view()->composer('partials.profbox',function($view){
-                    if(!$view->profUser){
+
+                    
+                    if(!isset($view->profUser)){
                             $view->with('profUser',\Auth::user());
                     }
 
