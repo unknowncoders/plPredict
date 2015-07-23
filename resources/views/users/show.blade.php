@@ -1,14 +1,9 @@
 @extends('layouts.master')
 
 @section('title')
-{{$user->username}}'s profile
+{{$profUser->username}}'s profile
 @stop
 
 @section('content')
-
-    <div>
-            Name: {{ $user->name }}
-            (Username: {{ $user->username }})
-    </div>
-
+    @include('partials.profbox')
 @stop

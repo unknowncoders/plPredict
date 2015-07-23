@@ -21,4 +21,8 @@ class Gameweek extends Model
         public function predictors(){
                 return $this->belongsToMany('App\User','gameweek_user');
         }
+
+        public function scopeIncomplete($query){
+                    $query->where('complete','==','false');
+        }
 }

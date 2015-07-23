@@ -5,8 +5,8 @@
    <a href="/badges">Badges</a> 
    <a href="/standings">Standings</a> 
 
-    @if($user->username)
-   <a href="{{ url('/users',$user->username) }}">{{ $user->name }}</a>
+    @if($authUser->username)
+   <a href="{{ url('/users',$authUser->username) }}">{{ $authUser->name }}</a>
     @endif
 
     <a href="/faq">FAQ</a>
