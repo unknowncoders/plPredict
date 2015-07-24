@@ -10,6 +10,13 @@ class Fixture extends Model
 
         protected $guarded=[];
 
+        /**
+         * Kickoff should be a Carbon instance
+         *
+         *
+         */
+        protected $dates=["kickoff"];
+
         public function predictions(){
             return $this->hasMany('App\Prediction');
         }
@@ -26,6 +33,13 @@ class Fixture extends Model
                 return $this->belongsTo('App\Gameweek','gameweek_id');
         }
 
+        public function isClosed(){
+                //A fixtureis closed 1 hour before kickoff
+                return ($this->kickoff < \Carbon\Carbon::now()->addHour(1));
+        }
 
+        public function isOver(){
+                return (isset($this->home_score) && isset($this->away_score));
+        }
 
 }

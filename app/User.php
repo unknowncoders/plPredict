@@ -40,21 +40,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return $this->belongsTo('App\Club');
     }
 
-    public function pic(){
-            return $this->belongsTo('App\Pic','pic_id');
-    }
-
     public function predictions(){
             return $this->hasMany('App\Prediction');
-    }
-
-    public function scores(){
-            return $this->hasMany('App\Score');
     }
 
     public function badges(){
             return $this->belongsToMany('App\Badge','badge_user','user_id','badge_id');
     }
 
+    public function gameweeks(){
+            return $this->belongsToMany('App\Gameweek','gameweek_user')->withPivot('score','rank');
+    }
+
+    public function months(){
+            return $this->belongsToMany('App\Month','month_user');
+    }
 
 }

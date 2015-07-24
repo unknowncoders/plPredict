@@ -23,6 +23,10 @@ class Club extends Model
         }
 
         public function pic(){
-                return $this->belongsTo('App\Pic','pic_id');
+                return $this->belongsTo('App\Pic','logo_id');
+        }
+
+        public function fanPic(){
+                return $this->belongsTo('App\Pic','fan_pic_id');
         }
 }

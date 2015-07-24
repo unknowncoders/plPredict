@@ -18,7 +18,11 @@ class Gameweek extends Model
                 return $this->belongsTo('App\Month');
         }
 
-        public function scores(){
-            return $this->hasMany('App\Score');
+        public function predictors(){
+                return $this->belongsToMany('App\User','gameweek_user');
+        }
+
+        public function scopeIncomplete($query){
+                    $query->where('complete','==','false');
         }
 }

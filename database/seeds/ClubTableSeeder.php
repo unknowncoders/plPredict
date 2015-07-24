@@ -14,12 +14,12 @@ class ClubTableSeeder extends Seeder
             DB::table('clubs')->delete();
 
             DB::table('clubs')->insert([
-                        ["name"=>"Arsenal","pic_id"=>1],
-                        ["name"=>"Chelsea","pic_id"=>2],
-                        ["name"=>"Liverpool","pic_id"=>1],
-                        ["name"=>"Manchester City","pic_id"=>1],
-                        ["name"=>"Manchester United","pic_id"=>1],
-                        ["name"=>"Tottenham","pic_id"=>3],
+                        ["name"=>"Arsenal","logo_id"=>5,"fan_pic_id"=>2],
+                        ["name"=>"Chelsea","logo_id"=>6,"fan_pic_id"=>3],
+                        ["name"=>"Liverpool","logo_id"=>5,"fan_pic_id"=>2],
+                        ["name"=>"Manchester City","logo_id"=>6,"fan_pic_id"=>3],
+                        ["name"=>"Manchester United","logo_id"=>5,"fan_pic_id"=>2],
+                        ["name"=>"Tottenham","logo_id"=>6,"fan_pic_id"=>4],
                     ]);
 
 

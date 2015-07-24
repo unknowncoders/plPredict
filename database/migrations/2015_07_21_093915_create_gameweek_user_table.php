@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScoresTable extends Migration
+class CreateGameweekUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,20 @@ class CreateScoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('scores', function (Blueprint $table) {
+        Schema::create('gameweek_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('val');
-            $table->integer('user_id')->unsigned();
             $table->integer('gameweek_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('boost_pid')->unsigned()->nullable();
+            $table->integer('score')->default(0);
+            $table->integer('rank')->nullable();
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('gameweek_id')->references('id')->on('gameweeks');
+            $table->foreign('boost_pid')->references('id')->on('predictions');
+
         });
     }
 
@@ -31,6 +36,6 @@ class CreateScoresTable extends Migration
      */
     public function down()
     {
-        Schema::drop('scores');
+        Schema::drop('gameweek_user');
     }
 }

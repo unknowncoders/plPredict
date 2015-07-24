@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-               return view('pages.home'); 
+            $gws = \App\Gameweek::incomplete()->take(2)->get();
+
+            return view('pages.home',compact('gws')); 
     }
 
 }

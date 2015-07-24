@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGameweeksTable extends Migration
+class CreateMonthUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,17 @@ class CreateGameweeksTable extends Migration
      */
     public function up()
     {
-        Schema::create('gameweeks', function (Blueprint $table) {
+        Schema::create('month_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('month_id')->unsigned();
-            $table->boolean('complete')->default(false);
+            $table->integer('user_id')->unsigned();
+            $table->integer('rank')->nullable();
+
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('month_id')->references('id')->on('months');
+
         });
     }
 
@@ -29,6 +33,6 @@ class CreateGameweeksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('gameweeks');
+        Schema::drop('month_user');
     }
 }

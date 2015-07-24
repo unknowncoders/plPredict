@@ -15,10 +15,8 @@ class CreateMonthsTable extends Migration
         Schema::create('months', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',32);
-            $table->integer('winner_user_id')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('winner_user_id')->references('id')->on('users');
         });
     }
 

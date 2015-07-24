@@ -15,10 +15,12 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('pic_id')->unsigned();
+            $table->integer('logo_id')->unsigned();
+            $table->integer('fan_pic_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('pic_id')->references('id')->on('pics');
+            $table->foreign('logo_id')->references('id')->on('pics');
+            $table->foreign('fan_pic_id')->references('id')->on('pics');
         });
     }
 
