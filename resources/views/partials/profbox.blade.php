@@ -1,5 +1,5 @@
 <div class="col-xs-12 col-sm-4 col-lg-3 userinfo ">
-              <img class="img-responsive img-circle"src="image/Soccer.png" alt="coming"></img> 
+              <img class="img-responsive img-circle" src="{{ URL::asset('image/Soccer.png') }}" alt="coming"></img> 
             
                @if ($user->club)
                     {{ $user->club->fanPic->path }}
