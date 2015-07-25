@@ -8,53 +8,66 @@
 
     @include('partials.profbox')
 
+
     @foreach ($gws as $gw)
         
-        <div>
-                <h4>Gameweek {{ $gw->id }} </h4>
+        <div class="col-xs-12 col-sm-7 col-lg-8  predictinfo  ">
+
+           <strong>  <h1 class="colorwhite">Gameweek {{ $gw->id }} </h1> </strong>
+            <hr>
                 <br>
                 
-                <div id="form-container">
                     {!! Form::open(['url'=>'predictions']) !!}
+                                        
                         @foreach ($gw->fixtures as $fxt)
-
-
-                            <div>
+                             <div class="col-sm-5 thumbnail predictbox "> 
                                     @if ($fxt->isClosed())
-                                        <div style="border: 1px solid black; width: 400px; padding: 10px;">
-                                                <div style="float:left; width:150px;">
-                                                        {{ $fxt->homeClub->name }} 
-                                                        <br>
-                                                        {{ $fxt->awayClub->name }}
-                                                </div>
+                                    
+                                      <span class="badge predictscore">
+                                        @if ($fxt->isOver())
+                                            @if ($fxt->predictions->count()!=0)
+                                                {{ $fxt->predictions[0]->score() }}
+                                            @else
+                                                -
+                                            @endif
+                                        @endif
+                                     </span>
+                                    <br><br>
+                                     <p>  {{ $fxt->homeClub->name }} </p>
+                                    
+                                        
+                                         <p class="predictdata"> 
 
-                                                <div style="float:left; width: 50px;">
-                                                        @if ($fxt->predictions->count() != 0)
-                                                            {{ $fxt->predictions[0]->home_score }} <br> {{ $fxt->predictions[0]->away_score }}                                
-                                                        @else
-                                                            - <br> - 
-                                                        @endif
-                                                </div>
+                                         @if ($fxt->predictions->count() != 0)
+                                                 {{ $fxt->predictions[0]->home_score }}
+                                             @else
+                                               - <br> - 
+                                              @endif
+                                       </p>
+         
+                                       <p class="predictresult">
 
-                                                <div style="float:left;background-color: #4488ff; width: 50px;">
-                                                        @if ($fxt->isOver())
-                                                            {{ $fxt->home_score }} <br> {{ $fxt->away_score }}
-                                                        @endif
-                                                </div>
-
-                                                <div style="float:left; background-color: #88bbff; width: 50px;">
-                                                        @if ($fxt->isOver())
-                                                            @if ($fxt->predictions->count()!=0)
-                                                                {{ $fxt->predictions[0]->score() }}
-                                                            @else
-                                                                -
-                                                            @endif
-                                                        @endif
-                                                </div>
-                                                <!--Dummy div to clear the float -->
-                                                <div style="clear:left"></div>
-
-                                        </div>
+                                       @if ($fxt->isOver())
+                                            {{ $fxt->home_score }} 
+                                         @endif
+                                      </p>
+                                          <br><br> 
+                                     <p class="predictdata">
+                                        @if ($fxt->predictions->count() != 0)
+                                            {{ $fxt->predictions[0]->away_score }}                                
+                                        @else
+                                            - <br> - 
+                                        @endif
+                                  
+                                     </p>
+                                    
+                                     <p class="predictresult">
+                                     @if ($fxt->isOver())
+                                            {{ $fxt->away_score }}
+                                        @endif
+                              
+                                     </p> 
+                                    <p class="predictname">  {{ $fxt->awayClub->name }} </p>
 
                                     @else
                                         <?php if( $fxt->predictions->count()==0){
@@ -71,16 +84,14 @@
                                             @include ('partials.predict_form',['hasPrediction'=>$hasPrediction,'p_home_score'=>$p_home_score,'p_away_score'=>$p_away_score])
                                     @endif
 
-                            </div>
-                            <br>
-                        @endforeach
-                    {!! Form::submit('Save',[]) !!}
-
+                                </div>
+                            @endforeach
+                            <div class="col-sm-12">
+                    {!! Form::submit('Save',['class'=>'predictsubmit']) !!}
+                   <br>               
+           </div>
                     {!! Form::close() !!}
-                </div>
-                
         </div>
-
-    @endforeach
+        @endforeach
 
 @stop

@@ -6,44 +6,50 @@
 
 @section('content')
 
-    <h3> Complete your registration </h3>
+   <br><br><br><br><br>
+ 
+   <div class="row">
+   <div class="col-lg-12 text-center">
+   <br><br><br>
 
-    
+             <div style="color:#D9411E;font-size:5vw;">Complete your registration</div>
+    </div>
+    </div>
+    <br><br><br>
 
-    <div>
+         
+         <div class="col-sm-6 registrationborder" id="registrationmargin">
+
             {!! Form::open(['url'=>'complete']) !!}
 
-                <div>
-                        {!! Form::label('username','Username:') !!}
-                        {!! Form::text('username',null,[]) !!}
+                <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user"></i></span>
+                     {!! Form::text('username',null,['placeholder'=>'Enter your Username', 'class'=>'form-control',  'aria-describedby'=>'sizing-addon1']) !!}
+                </div>
+
+                <!--div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-key"></i></span>
+                     {!! Form::password('password',['placeholder'=>'Enter your Password', 'class'=>'form-control',  'aria-describedby'=>'sizing-addon1']) !!}
+                </div-->
+
+                <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-heartbeat"></i></span>
+                        {!! Form::select('club_id',$clubs,null,['class'=>'form-control','aria-describedby'=>'sizing-addon1']) !!}
                 </div>
 
                 <div>
-                        {!! Form::label('password','Password:') !!}
-                        {!! Form::password('password',null,[]) !!}
-                </div>
-
-                <div>
-                        {!! Form::select('club_id',$clubs,null,[]) !!}
-                </div>
-
-                <div>
-                        {!! Form::submit('Done',[]) !!}
+                        {!! Form::submit('Done',['class'=>'registrationsubmitbutton']) !!}
                 </div>
 
             {!! Form::close() !!}
 
             @if(count($errors)>0) 
               @foreach($errors->all() as $error) 
-                    {{ $error }}
+                 <div style="color:red; margin-top:5px;">   {{ $error }} </div>
                 @endforeach
             @endif
 
-
-
-    </div>
-
-    
+       </div>
 @stop
 
 

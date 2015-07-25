@@ -65,3 +65,157 @@ height:750px;
 
     height: 650px;
 }
+
+.registrationlink
+{
+ color:#FFFFFF;
+
+}
+.registrationlink:hover,
+.registrationlink:active
+{
+  color:#FFFFFF;
+  text-decoration:none;
+}
+
+
+.userinfo
+{
+
+margin-top:100px;
+border:3px solid #D9411E;
+border-radius: 25px;
+padding:10px;
+color:#D9411E;
+}
+
+.userpara
+{
+ text-align:center;
+}
+
+.userlink
+{
+
+color:#D9411E;
+}
+
+.userlink:hover, 
+.userlink:active
+{
+    text-decoration:none;
+    color:#FFFFFF;
+}
+
+.user_info
+{
+
+padding:8px;
+}
+
+#registrationmargin
+{
+
+  margin-left:25%;
+  width:50%;
+ height: 140px;
+}
+
+@media only screen and (max-width: 770px)
+{
+
+ #registrationmargin
+ {
+   
+    margin-left:5%;
+    width:90%;
+    height:140px;
+ }
+
+}
+
+.registrationsubmitbutton
+{
+
+float:right;
+font-size: 17px;
+border-radius: 5px;
+background:#D9411E; 
+border: 5px solid #D9411E;
+color:#FFFFFF;
+margin-top:4px;
+}
+
+.registrationborder
+{
+  border-radius: 15px;
+  padding:10px;
+  border: 5px solid #FFFFFF;
+  background-color: #FFFFFF;
+}
+
+
+.predictinfo
+{
+    margin-top:100px;
+    float:right;
+}
+
+.predictbox
+{
+  margin: 3%;
+  color:#333333;
+  text-align:center;
+}
+
+.predictscore
+{
+ padding:10px;
+ float: right;
+}
+
+.predictdata
+{
+  display: inline;
+}
+.predictresult
+{
+  margin-left:20px;
+  display: inline;
+  color:#FFFFFF;
+  background-color: #D9411E;
+  padding:5px;
+  border-radius:5px;
+}
+.predictname
+{
+  margin-top:15px;
+}
+
+.predicttextarea
+{
+  display:inline;
+  width:40px;
+  text-align:center;
+}
+
+.predicttextshow
+{
+  display:inline;
+  margin-left:20px;
+  color:#FFFFFF;
+  padding:5px;
+  background-color: #75A3D1;
+  border-radius:5px;
+}
+
+.predictsubmit
+{
+ color:white;
+ background-color: #D9411E;
+ border: 2px solid #D9411E;
+ border-radius:5px;
+ padding:5px;
+ float:right;
+ margin-bottom:15px;
+}
