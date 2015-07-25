@@ -42,4 +42,8 @@ class Fixture extends Model
                 return (isset($this->home_score) && isset($this->away_score));
         }
 
+        public function prediction($id){
+                return $this->predictions()->where('user_id',$id)->first();
+        }
+
 }

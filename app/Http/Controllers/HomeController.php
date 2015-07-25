@@ -24,9 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-            $gws = \App\Gameweek::incomplete()->take(2)->get();
+            $user = \Auth::user();
+            $gws = \App\Gameweek::incomplete()
+                        ->take(2)
+                        ->with('fixtures')
+                        ->with(['fixtures.predictions'=> function($query) use($user){
+                                $query->where('user_id',$user->id);
+                        }])
+                        ->get();
 
-            return view('pages.home',compact('gws')); 
+
+            return view('pages.home',compact('gws','user')); 
     }
 
 }

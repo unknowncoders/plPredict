@@ -19,8 +19,8 @@ class CreatePredictionsTable extends Migration
             $table->tinyInteger('home_score')->nullable();
             $table->tinyInteger('away_score')->nullable();
 
-            // 0=wrong, 1=result_right, 2=draw_right, 3=[result+gd]_right, 4=[Complete]right
-            $table->tinyInteger('grade')->nullable();
+            // 0=not set, 1=wrong, 2=result_right, 3=draw_right, 4=[result+gd]_right, 5=[Complete]right
+            $table->tinyInteger('grade')->default(0);
 
             $table->timestamps();
 

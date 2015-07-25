@@ -19,10 +19,14 @@ class Gameweek extends Model
         }
 
         public function predictors(){
-                return $this->belongsToMany('App\User','gameweek_user');
+                return $this->belongsToMany('App\User','gameweek_user')->withPivot('boost_pid','score','rank');
         }
 
         public function scopeIncomplete($query){
                     $query->where('complete','==','false');
+        }
+
+        public function predictions(){
+                return $this->hasManyThrough('App\Prediction','App\Fixture');
         }
 }

@@ -1,24 +1,24 @@
 <div>
             <br>
-                @if ($profUser->club)
-                    {{ $profUser->club->fanPic->path }}
+                @if ($user->club)
+                    {{ $user->club->fanPic->path }}
                 @else
                     {{ \App\Pic::find(1)->path }}
                 @endif
             <br>
             <br>
-                <a href="{{ url('/users',$profUser->username) }}">{{ $profUser->name }}</a>
+                <a href="{{ url('/users',$user->username) }}">{{ $user->name }}</a>
             <br>
-                (<a href="{{ url('/users',$profUser->username) }}">{{ $profUser->username }}</a>)
+                (<a href="{{ url('/users',$user->username) }}">{{ $user->username }}</a>)
             <br>
             <br>
-            Club: @if (isset($profUser->club)){{ $profUser->club->name }} @else - @endif
+            Club: @if (isset($user->club)){{ $user->club->name }} @else - @endif
             <br>
-            Points: {{ $profUser->score }}
+            Points: {{ $user->score }}
             <br>
-            Standing: {{ $profUser->rank }}
+            Standing: {{ $user->rank }}
             <br>
-            Badges: {{  $profUser->badges()->count() }}
+            Badges: {{  $user->badges()->count() }}
 </div>
 
 

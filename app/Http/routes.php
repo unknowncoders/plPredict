@@ -22,6 +22,8 @@ Route::get('settings','UserController@getSetting');
 
 Route::get('users/{username}','UserController@show');
 
+Route::post('predictions','PredictionController@store');
+
 
     //Authentication routes
         Route::get('login', 'Auth\AuthController@getLogin');

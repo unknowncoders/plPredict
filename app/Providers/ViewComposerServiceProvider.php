@@ -33,7 +33,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 
                     if(\Auth::check()){
                             $logged_in = true;
-                            $view->with('authUser',\Auth::user());
+                                $view->with('authUser',\Auth::user());
                     }
                     $view->with('logged_in',$logged_in);
             });
@@ -41,10 +41,9 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     private function composeProfileBox(){
             view()->composer('partials.profbox',function($view){
-
                     
-                    if(!isset($view->profUser)){
-                            $view->with('profUser',\Auth::user());
+                    if(!isset($view->user)){
+                            $view->with('user',\Auth::user());
                     }
 
             });
