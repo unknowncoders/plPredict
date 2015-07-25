@@ -21,6 +21,7 @@ Route::get('rules','PagesController@rules');
 Route::get('settings','UserController@getSetting');
 
 Route::get('users/{username}','UserController@show');
+Route::get('users/{username}/badges','User\BadgeController@index');
 
 Route::post('predictions','PredictionController@store');
 
