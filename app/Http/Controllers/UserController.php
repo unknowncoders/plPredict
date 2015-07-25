@@ -36,11 +36,12 @@ class UserController extends Controller
                 $usr = $request->user();
                 $usr->username = $input['username'];
                 $usr->status=1;
-                if($input['password']){
+        /**   we are not taking any password for input
+               if($input['password']){
                     $usr->password = \Hash::make($input['password']);
                     $usr->status=2;
                 }
-
+   **/
                 if($input['club_id']){
                     $usr->club_id = $input['club_id'];
                 }
