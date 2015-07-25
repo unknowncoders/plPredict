@@ -28,7 +28,7 @@ class CompleteProfileRequest extends Request
     public function rules()
     {
         return [
-                'username'=>'unique:users|min:8|required'
+                'username'=>'required|unique:users|min:8'
         ];
     }
 }

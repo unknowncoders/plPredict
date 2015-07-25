@@ -40,7 +40,6 @@
   </div>
 
 </section>
-
      <form method="POST" action="/login">
              {!! csrf_field() !!}
          
@@ -63,11 +62,12 @@
              </div>
          </form>
 
+<div class="colorwhite">
              @if(count($errors)>0) 
               @foreach($errors->all() as $error) 
                     {{ $error }}
                 @endforeach
             @endif
-
+</div>
 @stop
     

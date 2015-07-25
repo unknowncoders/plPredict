@@ -23,8 +23,8 @@ class UserRepository
                                 'provider'=>$provider,
                                 'provider_id'=>$userData->id,
                                 'club_id'=>null,
-                                'pic_id'=>'1',
                                 'score'=>0,
+                                'rank'=>null,
                         ]);
 
                 }

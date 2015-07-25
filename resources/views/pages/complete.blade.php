@@ -45,7 +45,7 @@
 
             @if(count($errors)>0) 
               @foreach($errors->all() as $error) 
-                    {{ $error }}
+                 <div style="color:red; margin-top:5px;">   {{ $error }} </div>
                 @endforeach
             @endif
 
