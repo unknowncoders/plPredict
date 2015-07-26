@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-{{$user->username}}'s profile
+    {{$user->username}}'s profile
 @stop
 
 @section('content')
