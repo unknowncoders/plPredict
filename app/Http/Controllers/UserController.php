@@ -23,7 +23,7 @@ class UserController extends Controller
 
                 $clubs = \App\Club::lists('name','id')->toArray();
 
-                $clubs = array_merge([null=>'-- Favorite club --'],$clubs);
+                $clubs = array_merge([0=>'-- Favorite club --'],$clubs);
 
                 return view('pages.complete',compact('clubs'));
 
