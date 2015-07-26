@@ -30,12 +30,16 @@ class ViewComposerServiceProvider extends ServiceProvider
     private function composeNavigation(){
         view()->composer('partials.nav',function($view){
                     $logged_in = false;
+                    $onLogin = false;
 
                     if(\Auth::check()){
                             $logged_in = true;
                                 $view->with('authUser',\Auth::user());
                     }
-                    $view->with('logged_in',$logged_in);
+                    if(isset($view->onLoginPage)){
+                            $onLogin = true;
+                    }
+                    $view->with('logged_in',$logged_in)->with('onLogin',$onLogin);
             });
     }
 

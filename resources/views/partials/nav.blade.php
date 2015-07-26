@@ -37,12 +37,20 @@
            </li>
            
         </ul>
-@else
+@elseif ($onLogin)
 
-        <ul class="nav nav-tabs navbar-right">
+      <ul class="nav nav-tabs navbar-right">
 
         <li role="presentation" class="page-scroll"><a href="#page-top" class="colorwhite"><strong>Login</strong></a></li>
         <li role="presentation" class="page-scroll" ><a href="#about"class ="colorwhite"><strong>About</strong></a></li>
+     
+      </ul>
+
+@else 
+      <ul class="nav nav-tabs navbar-right">
+
+        <li role="presentation" class="page-scroll"><a href="/login#page-top" class="colorwhite"><strong>Login</strong></a></li>
+        <li role="presentation" class="page-scroll" ><a href="/login#about"class ="colorwhite"><strong>About</strong></a></li>
      
       </ul>
        <!-- using only login with fb no sign up method-->
