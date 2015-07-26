@@ -15,8 +15,8 @@ class UserController extends Controller
                 $this->middleware('incomplete',['only'=>['getComplete','postComplete']]);
         }
 
-        public function show(\App\User $profUser){
-                return view('users.show',compact('profUser'));
+        public function show(\App\User $user){
+                return view('users.show',compact('user'));
         }
 
         public function getComplete(){

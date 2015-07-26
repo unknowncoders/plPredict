@@ -28,13 +28,13 @@
 
     <!-- javascript file inclusion-->
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{{ URL::asset('js/jquery.js') }}"></script>
 
 
-     <script src="js/bootstrap.min.js"></script>
+     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
      <!-- Plugin JavaScript -->
      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-     <script src="js/freelancer.js"></script>
+     <script src="{{ URL::asset('js/freelancer.js') }}"></script>
 
  </body>
 </html>
