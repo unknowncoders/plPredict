@@ -11,19 +11,42 @@
 |
 */
 
-Route::get('/','HomeController@index');
-Route::get('predict','HomeController@index');
+/*
+ * Predict page routes -----------------------------------------------------
+ *
+ */
 
-Route::get('badges','BadgeController@index');
-Route::get('standings','UserController@index');
-Route::get('faq','PagesController@faq');
-Route::get('rules','PagesController@rules');
-Route::get('settings','UserController@getSetting');
+    Route::get('/','HomeController@index');
+    Route::get('predict','HomeController@index');
+    
+    Route::post('predictions','PredictionController@store');
+/* -----------------------------------------------------------------------*/
 
-Route::get('users/{username}','UserController@show');
-Route::get('users/{username}/badges','User\BadgeController@index');
+/*
+ * Miscellaneous pages routes -----------------------------------------------------
+ *
+ */
 
-Route::post('predictions','PredictionController@store');
+    Route::get('badges','BadgeController@index');
+    Route::get('standings','UserController@index');
+    Route::get('faq','PagesController@faq');
+    Route::get('rules','PagesController@rules');
+    Route::get('settings','UserController@getSetting');
+
+/* -----------------------------------------------------------------------*/
+
+/*
+ * Profile page routes -----------------------------------------------------
+ *
+ */
+
+    Route::get('users/{username}','UserController@show');
+    Route::get('users/{username}/gameweek/{gwid}','UserController@show');
+    Route::post('users/{username}/gameweek/','UserController@showGameweek');
+    Route::get('users/{username}/badges','User\BadgeController@index');
+
+/* -----------------------------------------------------------------------*/
+
 
 
     //Authentication routes

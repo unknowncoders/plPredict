@@ -33,6 +33,10 @@ class Fixture extends Model
                 return $this->belongsTo('App\Gameweek','gameweek_id');
         }
 
+        public function scopeOver($query){
+                $query->whereNotNull('home_score')->whereNotNull('away_score');
+        }
+
         public function isClosed(){
                 //A fixtureis closed 1 hour before kickoff
                 return ($this->kickoff < \Carbon\Carbon::now()->addHour(1));

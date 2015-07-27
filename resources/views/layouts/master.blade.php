@@ -18,9 +18,9 @@
 
     <body class="backgroundcolor font">
             <div class="container">
-            @include('partials.nav')
+                @include('partials.nav')
             
-             @yield('content')
+                @yield('content')
             </div>
     
         @yield('footer')
