@@ -17,13 +17,13 @@ class UserController extends Controller
 
         public function show(\App\User $user,\App\Gameweek $gameweekInFocus = null){
 
-                if(!$gameweekInFocus or !$gameweekInFocus->complete){
                     //Get the last "over" fixture
+                    $lastFixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
 
-                    $fixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
+                if(!$gameweekInFocus or !$gameweekInFocus->complete){
 
                     //Get the corresponding gameweek and eager load its fixtures
-                    $gameweekInFocus = $fixture->gameweek()->with(['fixtures'=>function ($query){
+                    $gameweekInFocus = $lastFixture->gameweek()->with(['fixtures'=>function ($query){
                                                                 $query->over();
                                                     }])->first();
                 }else{
@@ -35,7 +35,7 @@ class UserController extends Controller
                 $gameweeks = \App\Gameweek::complete()->orderBy('id','desc')->paginate(10);
 
 
-                return view('users.show',compact('user','gameweekInFocus','gameweeks'));
+                return view('users.show',compact('user','gameweekInFocus','gameweeks','lastFixture'));
         }
 
         public function showGameweek(\App\User $user,Request $request){

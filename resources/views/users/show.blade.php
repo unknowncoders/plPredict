@@ -7,7 +7,24 @@
 @section('content')
     @include('partials.profbox')
 
+            <div style="margin-top:120px;">
+                    <a href="/users/{{$user->username}}">Predictions</a>
+                    <a href="/users/{{$user->username}}/badges">Badges</a>
+            </div>
+
             <div style="margin-top:150px;">
+
+                <span class="colorwhite">
+                    @if ($gameweekInFocus->id > 1)
+                        <a href="users/{{$user->username}}/gameweek/{{$gameweekInFocus->id}}">Gameweek {!!$gameweekInFocus->id-1!!}</a>
+                    @endif
+
+                    @if ($gameweekInFocus->id < $lastFixture->gameweek->id )
+                        <a href="users/{{$user->username}}/gameweek/{{$gameweekInFocus->id}}">Gameweek {!!$gameweekInFocus->id+1!!}</a>
+                    @endif
+                </span>
+
+            
                     {!! Form::open(['action'=>['UserController@showGameweek',$user->username]]) !!}
 
                             <select name="gwid">
