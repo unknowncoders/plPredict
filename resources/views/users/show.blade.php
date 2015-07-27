@@ -16,11 +16,11 @@
 
                 <span class="colorwhite">
                     @if ($gameweekInFocus->id > 1)
-                        <a href="users/{{$user->username}}/gameweek/{{$gameweekInFocus->id}}">Gameweek {!!$gameweekInFocus->id-1!!}</a>
+                        <a href="/users/{{$user->username}}/gameweek/{!!$gameweekInFocus->id-1!!}">Gameweek {!!$gameweekInFocus->id-1!!}</a>
                     @endif
 
                     @if ($gameweekInFocus->id < $lastFixture->gameweek->id )
-                        <a href="users/{{$user->username}}/gameweek/{{$gameweekInFocus->id}}">Gameweek {!!$gameweekInFocus->id+1!!}</a>
+                        <a href="/users/{{$user->username}}/gameweek/{!!$gameweekInFocus->id+1!!}">Gameweek {!!$gameweekInFocus->id+1!!}</a>
                     @endif
                 </span>
 
