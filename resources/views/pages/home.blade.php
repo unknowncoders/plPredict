@@ -41,7 +41,7 @@
                                          @if ($fxt->predictions->count() != 0)
                                                  {{ $fxt->predictions[0]->home_score }}
                                              @else
-                                               - <br> - 
+                                                 - 
                                               @endif
                                        </p>
          
@@ -49,6 +49,8 @@
 
                                        @if ($fxt->isOver())
                                             {{ $fxt->home_score }} 
+                                       @else
+                                            -
                                          @endif
                                       </p>
                                           <br><br> 
@@ -56,7 +58,7 @@
                                         @if ($fxt->predictions->count() != 0)
                                             {{ $fxt->predictions[0]->away_score }}                                
                                         @else
-                                            - <br> - 
+                                              - 
                                         @endif
                                   
                                      </p>
@@ -64,6 +66,7 @@
                                      <p class="predictresult">
                                      @if ($fxt->isOver())
                                             {{ $fxt->away_score }}
+                                       @else -
                                         @endif
                               
                                      </p> 
