@@ -50,9 +50,7 @@
                                               @endif 
                                        </span>
 
-                                        
-                                             <p class="gameweekuppername"> {{ $fixture->homeClub->name }}</p>
-
+                                            <p class="gameweekuppername"> {{ $fixture->homeClub->name }}</p>
                                                <p class="gameweekpredictscore">
 
                                             @if ($pred)
@@ -92,9 +90,35 @@
                     @endif
 
                   </div>
+
        </div>
         <div id="badges" class="tab-pane fade">
-            <h3>Badges</h3>
+
+                                <h2>Total Badges <span class="badge badgescount"> {{$badges->count()}}</span> </h2>
+                                
+                                     @foreach ($badges as $badge)
+
+                                        {{ $badge->icon_path }}
+                                        
+                                      <div class="col-md-11 col-sm-11 col-lg-5 thumbnail predictbox">
+                                    
+                                      <h3 class="badgeline">     <img class="img-circle" width="70" height="70" src="{{ URL::asset('image/Soccer.png') }}" alt="coming"></img> 
+                                
+                                      <a href="#" class="badgename" >{{ $badge->name }}</a>
+
+                                       </h3>
+                            <br><br>
+
+                          <div><span class="badge badgegameweek">Gameweek {{ $badge->pivot->gameweek_id}} </span></div>
+
+                                  <!--create a link so that by click the name the page redirect to badges pages for full explanation-->
+                                  <!-- {{ $badge->description }} -->
+
+                                          </div>
+                                     @endforeach
+    
+   
+
         </div> 
    </div>
   </div>
@@ -103,6 +127,7 @@
                             <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2  gamepointinfo " >
                                 <table class="table table-bordered">
                                    <tbody>
+                                 
                                     @foreach ($gameweeks as $gameweek)
                                     <tr> 
                                         <td>     <p><a href="/users/{{$user->username}}/gameweek/{{$gameweek->id}}" class="gameweeklink">Gameweek {{$gameweek->id}}</a>
@@ -119,4 +144,10 @@
                                 </table>
                             </div>
 
-@stop
+<script>
+$(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+                            @stop

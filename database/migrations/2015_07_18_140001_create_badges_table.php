@@ -16,6 +16,7 @@ class CreateBadgesTable extends Migration
             $table->increments('id');
             $table->string('name',64);
             $table->string('description');
+            $table->string('icon_path')->default("badges/default.jpg");
 
             $table->timestamps();
         });

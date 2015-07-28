@@ -42,7 +42,6 @@
 
     Route::get('users/{username}','UserController@show');
     Route::get('users/{username}/gameweek/{gwid}','UserController@show');
-    Route::post('users/{username}/gameweek/','UserController@showGameweek');
     Route::get('users/{username}/badges','User\BadgeController@index');
 
 /* -----------------------------------------------------------------------*/

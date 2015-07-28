@@ -45,7 +45,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function badges(){
-            return $this->belongsToMany('App\Badge','badge_user','user_id','badge_id');
+            return $this->belongsToMany('App\Badge','badge_user','user_id','badge_id')->withPivot('gameweek_id');
     }
 
     public function gameweeks(){

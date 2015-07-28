@@ -17,8 +17,8 @@ class UserController extends Controller
 
         public function show(\App\User $user,\App\Gameweek $gameweekInFocus = null){
 
-                    //Get the last "over" fixture
-                    $lastFixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
+                //Get the last "over" fixture
+                $lastFixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
 
                 if(!$gameweekInFocus or !$gameweekInFocus->complete){
 
@@ -34,14 +34,9 @@ class UserController extends Controller
 
                 $gameweeks = \App\Gameweek::complete()->orderBy('id','desc')->paginate(10);
 
+                $badges = $user->badges()->orderBy('badge_user.gameweek_id','asc')->get();
 
-                return view('users.show',compact('user','gameweekInFocus','gameweeks','lastFixture'));
-        }
-
-        public function showGameweek(\App\User $user,Request $request){
-
-                return redirect()->action('UserController@show',['username'=>$user->username,'gwid'=>$request->gwid]);
-
+                return view('users.show',compact('user','gameweekInFocus','gameweeks','lastFixture','badges'));
         }
 
         public function getComplete(){
@@ -66,7 +61,7 @@ class UserController extends Controller
                     $usr->password = \Hash::make($input['password']);
                     $usr->status=2;
                 }
-   **/
+            **/
                 if($input['club_id']){
                     $usr->club_id = $input['club_id'];
                 }

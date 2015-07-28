@@ -328,3 +328,31 @@ margin-top:50px;
 {
  margin-top:10px;
 }
+
+.badgescount
+{
+  padding:12px;
+  background-color:#75A3D1;
+}
+
+.badgegameweek
+{
+  padding:10px;
+  color:white;
+  background-color:#D9411E;
+}
+.badgeline
+{
+  float:left;
+  color: #D9411E;
+}
+.badgename
+{
+display:inline;
+color: #D9411E;
+}
+
+.badgename:hover
+{
+ color:#D9411E;
+}
