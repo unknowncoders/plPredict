@@ -14,8 +14,8 @@ class BadgeTableSeeder extends Seeder
             DB::table('badges')->delete();
 
             DB::table('badges')->insert([
-                        ["name"=>"debut","description"=>"Made first prediction"],
-                        ["name"=>"On Target","description"=>"Made first correct prediction"],
+                        ["name"=>"debut","description"=>"Made first prediction","icon_path"=>"badges/debut.jpg"],
+                        ["name"=>"On Target","description"=>"Made first correct prediction","icon_path"=>"badges/ontarget.jpg"],
                     ]);
     }
 }

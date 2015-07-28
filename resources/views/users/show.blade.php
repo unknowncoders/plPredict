@@ -24,19 +24,15 @@
                     @endif
                 </span>
 
+                <ul>
+                        @foreach ($gameweeks as $gameweek) 
+                            <li>
+                                    <a href="/users/{{$user->username}}/gameweek/{{$gameweek->id}}">Gameweek {{$gameweek->id}}</a>
+                            </li>
+
+                        @endforeach
+                </ul>
             
-                    {!! Form::open(['action'=>['UserController@showGameweek',$user->username]]) !!}
-
-                            <select name="gwid">
-                                @foreach ($gameweeks as $gameweek)
-                                    <option value="{{ $gameweek->id }}">Gameweek {{$gameweek->id}}</option>
-                                @endforeach
-
-
-                            </select>
-
-                                {!! Form::submit('Done',[]) !!}
-                    {!! Form::close() !!}
             </div>
                     
                             <div class="colorwhite" style="margin-top:200px;">
@@ -59,8 +55,20 @@
                                     @endforeach
                             </div>
 
+                           <div class="colorwhite" style="margin-top: 240px;">
+                                   Badges ({{$badges->count()}}) <br>
+
+                                    @foreach ($badges as $badge)
+
+                                        {{ $badge->icon_path }}<br>
+                                        {{ $badge->name }}<br>
+                                        {{ $badge->description }}
+
+                                    @endforeach
+                           </div>
+
                           
-                            <div class="colorwhite" style="margin-top:300px;">
+                            <div class="colorwhite" style="margin-top:280px;">
                                     @foreach ($gameweeks as $gameweek)
                                         <strong>
                                             <a href="/users/{{$user->username}}/gameweek/{{$gameweek->id}}">Gameweek {{$gameweek->id}}</a>
