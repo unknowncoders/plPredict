@@ -23,7 +23,11 @@ class Gameweek extends Model
         }
 
         public function scopeIncomplete($query){
-                    $query->where('complete','==','false');
+                    $query->where('complete',false);
+        }
+
+        public function scopeComplete($query){
+                    $query->where('complete',true);
         }
 
         public function predictions(){

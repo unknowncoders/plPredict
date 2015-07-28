@@ -11,7 +11,7 @@
 
     @foreach ($gws as $gw)
         
-        <div class="col-xs-12 col-sm-7 col-lg-8  predictinfo  ">
+        <div class="col-xs-12  col-sm-8 col-md-9 col-lg-9 predictinfo ">
 
            <strong>  <h1 class="colorwhite">Gameweek {{ $gw->id }} </h1> </strong>
             <hr>
@@ -20,7 +20,7 @@
                     {!! Form::open(['url'=>'predictions']) !!}
                                         
                         @foreach ($gw->fixtures as $fxt)
-                             <div class="col-sm-5 thumbnail predictbox "> 
+                             <div class="col-md-12 col-sm-12 col-lg-5 thumbnail predictbox "> 
                                     @if ($fxt->isClosed())
                                     
                                       <span class="badge predictscore">
@@ -29,7 +29,9 @@
                                                 {{ $fxt->predictions[0]->score() }}
                                             @else
                                                 -
-                                            @endif
+                                                @endif
+                                        @else
+                                            -
                                         @endif
                                      </span>
                                     <br><br>
@@ -41,7 +43,7 @@
                                          @if ($fxt->predictions->count() != 0)
                                                  {{ $fxt->predictions[0]->home_score }}
                                              @else
-                                                 - 
+                                               - 
                                               @endif
                                        </p>
          
@@ -66,7 +68,9 @@
                                      <p class="predictresult">
                                      @if ($fxt->isOver())
                                             {{ $fxt->away_score }}
-                                       @else -
+                                            
+                                             @else
+                                            -
                                         @endif
                               
                                      </p> 
@@ -80,8 +84,7 @@
                                                 }else{
                                                   $p_home_score = $fxt->predictions[0]->home_score;
                                                   $p_away_score = $fxt->predictions[0]->away_score;
-                                                  $hasPrediction = true;
-                                                }
+                                                  $hasPrediction = true; }
                                         ?>
 
                                             @include ('partials.predict_form',['hasPrediction'=>$hasPrediction,'p_home_score'=>$p_home_score,'p_away_score'=>$p_away_score])

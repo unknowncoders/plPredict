@@ -15,8 +15,33 @@ class UserController extends Controller
                 $this->middleware('incomplete',['only'=>['getComplete','postComplete']]);
         }
 
-        public function show(\App\User $user){
-                return view('users.show',compact('user'));
+        public function show(\App\User $user,\App\Gameweek $gameweekInFocus = null){
+
+                    //Get the last "over" fixture
+                    $lastFixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
+
+                if(!$gameweekInFocus or !$gameweekInFocus->complete){
+
+                    //Get the corresponding gameweek and eager load its fixtures
+                    $gameweekInFocus = $lastFixture->gameweek()->with(['fixtures'=>function ($query){
+                                                                $query->over();
+                                                    }])->first();
+                }else{
+                    $gameweekInFocus->load(['fixtures'=>function ($query){
+                                                                $query->over();
+                                                    }]);
+                }
+
+                $gameweeks = \App\Gameweek::complete()->orderBy('id','desc')->paginate(10);
+
+
+                return view('users.show',compact('user','gameweekInFocus','gameweeks','lastFixture'));
+        }
+
+        public function showGameweek(\App\User $user,Request $request){
+
+                return redirect()->action('UserController@show',['username'=>$user->username,'gwid'=>$request->gwid]);
+
         }
 
         public function getComplete(){

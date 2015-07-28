@@ -33,6 +33,13 @@ class RouteServiceProvider extends ServiceProvider
                         return \App\User::where('username',$username)->firstOrFail();
                 }
         );
+
+        $router->bind('gwid',
+                function($gwid)
+                { 
+                        return \App\Gameweek::where('id',$gwid)->firstOrFail();
+                }
+        );
     }
 
     /**

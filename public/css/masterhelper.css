@@ -87,6 +87,8 @@ border:3px solid #D9411E;
 border-radius: 25px;
 padding:10px;
 color:#D9411E;
+text-align:center;
+
 }
 
 .userpara
@@ -109,8 +111,6 @@ color:#D9411E;
 
 .user_info
 {
-
-padding:8px;
 }
 
 #registrationmargin
@@ -189,7 +189,7 @@ margin-top:4px;
 }
 .predictname
 {
-  margin-top:15px;
+  margin-top:14px;
 }
 
 .predicttextarea
@@ -212,10 +212,119 @@ margin-top:4px;
 .predictsubmit
 {
  color:white;
- background-color: #D9411E;
- border: 2px solid #D9411E;
+ background-color: #75A3D1;
+ border: 2px solid #75A3D1;
  border-radius:5px;
  padding:5px;
  float:right;
  margin-bottom:15px;
+}
+
+.showtabs
+{
+ color: #333333;
+}
+
+.showtabs:hover
+{
+ color: #333333;
+}
+
+.gamepointinfo
+{
+
+margin-top:10px;
+padding:10px;
+text-align:center;
+
+}
+
+.gameweeklink
+{
+ 
+ text-decoration: none;
+ color: #FFFFFF;
+
+}
+
+.gameweeklink:hover
+{
+  color: #FFFFFF;
+}
+
+.gameweekdropdown
+{
+ background-color:#75A3D1;
+ color:#FFFFFF;
+}
+
+.gameweekdropdown:hover
+{
+  color:#FFFFFF; 
+}
+
+.dropdownprevious
+{
+ color:#D9411E;
+ float:left;
+}
+
+.dropdownnext
+{
+  color:#D9411E;
+  float:right;
+}
+
+.dropdownprevious:hover
+{
+  color:#D9411E;
+}
+
+.dropdownnext:hover
+{
+  color:#D9411E;
+}
+
+.gameweekbox
+{
+    margin-top:100px;
+    float:right;
+     min-height: 450px;
+}
+.gameweekshow
+{
+color:#333333;
+float:left;
+margin-top:50px;
+       
+}
+
+.gameweekuppername
+{
+ margin-top:40px;
+}
+
+.gameweekactualscore
+{
+ display:inline;
+ background-color: #D9411E;
+ color:#FFFFFF;
+ padding:5px;
+ margin:5px;
+ border-radius:5px;
+}
+
+.gameweekpredictscore
+{
+  display:inline;
+  background-color:#75A3D1;
+  color: #FFFFFF;
+  padding: 5px;
+  margin:5px;
+  border-radius:5px;
+}
+
+.gameweeklowername
+{
+ margin-top:10px;
 }
