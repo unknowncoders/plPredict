@@ -8,7 +8,7 @@
 
        <ul class= "nav nav-tabs navbar-left " style="margin-bottom:10px">
          <li role="presentation" ><a href="/predict" class="colorwhite"><strong>Predict</strong></a></li>
-         <li role="presentation" ><a href="/badge"class ="colorwhite"><strong>Badges</strong></a></li>
+         <li role="presentation" ><a href="/badges"class ="colorwhite"><strong>Badges</strong></a></li>
          <li role="presentation" ><a href="/standings"class ="colorwhite"><strong>Standings</strong></a></li>
        </ul>
 

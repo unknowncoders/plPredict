@@ -61,7 +61,7 @@ class UserController extends Controller
                     $usr->password = \Hash::make($input['password']);
                     $usr->status=2;
                 }
-   **/
+            **/
                 if($input['club_id']){
                     $usr->club_id = $input['club_id'];
                 }

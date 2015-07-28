@@ -9,5 +9,4 @@ use App\Http\Controllers\Controller;
 
 class BadgeContoller extends Controller
 {
-    //
 }
