@@ -34,7 +34,7 @@ class UserController extends Controller
 
                 $gameweeks = \App\Gameweek::complete()->orderBy('id','desc')->paginate(10);
 
-                $badges = $user->badges;
+                $badges = $user->badges()->orderBy('badge_user.gameweek_id','asc')->get();
 
                 return view('users.show',compact('user','gameweekInFocus','gameweeks','lastFixture','badges'));
         }

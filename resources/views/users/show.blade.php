@@ -61,7 +61,7 @@
                                     @foreach ($badges as $badge)
 
                                         {{ $badge->icon_path }}<br>
-                                        {{ $badge->name }}<br>
+                                        {{ $badge->name }} [{{ $badge->pivot->gameweek_id}}]<br>
                                         {{ $badge->description }}
 
                                     @endforeach
