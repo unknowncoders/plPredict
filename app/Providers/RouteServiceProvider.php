@@ -40,6 +40,13 @@ class RouteServiceProvider extends ServiceProvider
                         return \App\Gameweek::where('id',$gwid)->firstOrFail();
                 }
         );
+
+        $router->bind('monthid',
+                function($monthid)
+                { 
+                        return \App\Month::where('id',$monthid)->firstOrFail();
+                }
+        );
     }
 
     /**

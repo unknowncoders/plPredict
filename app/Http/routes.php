@@ -28,10 +28,11 @@
  */
 
     Route::get('badges','BadgeController@index');
-    Route::get('standings','UserController@index');
+    Route::get('standings','StandingsController@index');
+    Route::get('settings','UserController@getSetting');
+
     Route::get('faq','PagesController@faq');
     Route::get('rules','PagesController@rules');
-    Route::get('settings','UserController@getSetting');
 
 /* -----------------------------------------------------------------------*/
 
