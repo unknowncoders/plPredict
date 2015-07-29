@@ -39,7 +39,7 @@
                  </div>
                   <br><br><br><br><br><br><br><br>
                     @foreach ($gameweekInFocus->fixtures as $fixture)
-                                        <div class="col-md-11 col-sm-11 col-lg-5 thumbnail predictbox">
+                                        <div class="col-md-11 col-sm-11 col-lg-5 thumbnail gameweekpredictbox">
                                         <?php $pred = $fixture->predictions()->where('user_id',$user->id)->first(); ?>
                                      
                                         <span class="badge predictscore"> 
@@ -93,14 +93,14 @@
 
        </div>
         <div id="badges" class="tab-pane fade">
-
-                                <h2>Total Badges <span class="badge badgescount"> {{$badges->count()}}</span> </h2>
-                                
+                                 <br>
+                                <h2 style="margin-left:3%">Total Badges <span class="badge badgescount"> {{$badges->count()}}</span> </h2>
+                                <br><br>
                                      @foreach ($badges as $badge)
 
                                         {{ $badge->icon_path }}
                                         
-                                      <div class="col-md-11 col-sm-11 col-lg-5 thumbnail predictbox">
+                                      <div class="col-md-11 col-sm-11 col-lg-5 thumbnail gameweekpredictbox">
                                     
                                       <h3 class="badgeline">     <img class="img-circle" width="70" height="70" src="{{ URL::asset('image/Soccer.png') }}" alt="coming"></img> 
                                 
@@ -124,7 +124,7 @@
   </div>
 
                                          
-                            <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2  gamepointinfo " >
+                            <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2  gamepointinfo thumbnail" >
                                 <table class="table table-bordered">
                                    <tbody>
                                  
