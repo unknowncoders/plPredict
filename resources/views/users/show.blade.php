@@ -131,7 +131,8 @@
                                     @foreach ($gameweeks as $gameweek)
                                     <tr> 
                                         <td>     <p><a href="/users/{{$user->username}}/gameweek/{{$gameweek->id}}" class="gameweeklink">Gameweek {{$gameweek->id}}</a>
-                                               &nbsp <span class="badge"> {{ $gameweek->predictors()->where('user_id',$user->id)->first()->pivot->score }} </span></p>
+                                    <?php $userGameweek = $gameweek->predictors()->where('user_id',$user->id)->first(); ?>
+                                               &nbsp <span class="badge"> @if ($userGameweek) {{ $userGameweek->pivot->score }} @else - @endif </span></p>
                                          </td> 
                                       </tr>         
                                     @endforeach
