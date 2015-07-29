@@ -369,3 +369,33 @@ color: #D9411E;
   background-color:#333333;
   padding: 10px;
 }
+
+.badgespan
+{
+  padding: 10px;
+  background-color:#75A3D1;
+}
+
+.badgesbox
+{
+ margin:3%;
+ height:250px;
+}
+
+.badgetext
+{
+ text-align:center;
+  color: #D9411E;
+}
+
+.badgedesription
+{
+ color: #333333; 
+ text-align:center;
+}
+
+.badgestar
+{
+ float:right;
+ color:#75A3D1;
+}

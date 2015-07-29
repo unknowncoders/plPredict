@@ -125,19 +125,19 @@
 
                                          
                             <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2  gamepointinfo thumbnail" >
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" style="border: 1px solid #333333">
                                    <tbody>
                                  
                                     @foreach ($gameweeks as $gameweek)
                                     <tr> 
-                                        <td>     <p><a href="/users/{{$user->username}}/gameweek/{{$gameweek->id}}" class="gameweeklink">Gameweek {{$gameweek->id}}</a>
+                                        <td style="border: 1px solid #333333">     <p><a href="/users/{{$user->username}}/gameweek/{{$gameweek->id}}" class="gameweeklink">Gameweek {{$gameweek->id}}</a>
                                     <?php $userGameweek = $gameweek->predictors()->where('user_id',$user->id)->first(); ?>
                                                &nbsp <span class="badge"> @if ($userGameweek) {{ $userGameweek->pivot->score }} @else - @endif </span></p>
                                          </td> 
                                       </tr>         
                                     @endforeach
                                    <tr>
-                                      <td>
+                                       <td >
                                     {!! $gameweeks->render() !!}
                                       </td>
                                    </tr>
@@ -145,10 +145,5 @@
                                 </table>
                             </div>
 
-<script>
-$(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>
 
-                            @stop
+@stop
