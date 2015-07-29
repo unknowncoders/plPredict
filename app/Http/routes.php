@@ -29,6 +29,8 @@
 
     Route::get('badges','BadgeController@index');
     Route::get('standings','StandingsController@index');
+    Route::get('standings/gameweek/{gwid}','StandingsController@index');
+    Route::get('standings/month/{monthid}','StandingsController@index');
     Route::get('settings','UserController@getSetting');
 
     Route::get('faq','PagesController@faq');

@@ -136,11 +136,6 @@
                                          </td> 
                                       </tr>         
                                     @endforeach
-                                   <tr>
-                                       <td >
-                                    {!! $gameweeks->render() !!}
-                                      </td>
-                                   </tr>
                                    </tbody>
                                 </table>
                             </div>

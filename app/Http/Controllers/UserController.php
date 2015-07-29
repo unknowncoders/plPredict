@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class UserController extends Controller
 {
@@ -20,7 +21,7 @@ class UserController extends Controller
                 //Get the last "over" fixture
                 $lastFixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
 
-                if(!$gameweekInFocus or !$gameweekInFocus->complete){
+                if(!$gameweekInFocus or !$gameweekInFocus->hasCompletedFixture()){
 
                     //Get the corresponding gameweek and eager load its fixtures
                     $gameweekInFocus = $lastFixture->gameweek()->with(['fixtures'=>function ($query){
@@ -32,7 +33,9 @@ class UserController extends Controller
                                                     }]);
                 }
 
-                $gameweeks = \App\Gameweek::complete()->orderBy('id','desc')->paginate(10);
+                $gameweeks = \App\Gameweek::orderBy('id','desc')->get()->filter(function ($gw){
+                                                return $gw->hasCompletedFixture(); 
+                                            });
 
                 $badges = $user->badges()->orderBy('badge_user.gameweek_id','asc')->get();
 
