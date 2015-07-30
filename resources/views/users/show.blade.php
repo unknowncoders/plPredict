@@ -21,7 +21,7 @@
  
                      <div class="dropdown " style="float:right; margin-top:10px;">
               
-                          <button class="btn gameweekdropdown" type="button" data-toggle="dropdown">Gameweeks
+                          <button class="btn gameweekdropdown" type="button" data-toggle="dropdown">Gameweek
                           <span class="caret"></span></button>
                           <ul class="dropdown-menu">
               
@@ -125,7 +125,7 @@
 
                                          
                             <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2  gamepointinfo thumbnail" >
-                                <table class="table table-bordered" style="border: 1px solid #333333">
+                                <table class="table">
                                    <tbody>
                                  
                                     @foreach ($gameweeks as $gameweek)

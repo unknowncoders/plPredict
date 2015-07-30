@@ -56,8 +56,8 @@ height:750px;
 
 .loginlink:hover
 {
-  text-decoration:none;
   color:#FFFFFF;
+  text-decoration:none;
 }
 
 .loginaboutcss
@@ -68,14 +68,14 @@ height:750px;
 
 .registrationlink
 {
- color:#FFFFFF;
+ 
+    color:#FFFFFF;
 
 }
 .registrationlink:hover,
 .registrationlink:active
 {
   color:#FFFFFF;
-  text-decoration:none;
 }
 
 
@@ -105,8 +105,7 @@ color:#D9411E;
 .userlink:hover, 
 .userlink:active
 {
-    text-decoration:none;
-    color:#FFFFFF;
+    color:#D9411E;
 }
 
 .user_info
@@ -166,6 +165,7 @@ margin-top:4px;
   margin: 3%;
   color:#333333;
   text-align:center;
+  height:195px;
 }
 
 .predictscore
@@ -244,7 +244,6 @@ text-align:center;
 .gameweeklink
 {
  
- text-decoration: none;
  color: #333333;
 
 }
@@ -399,4 +398,39 @@ color: #D9411E;
 {
  float:right;
  color:#75A3D1;
+}
+
+.standingouter
+{
+ margin-top:150px;
+ min-height:300px;
+ padding:10px;
+}
+
+.standingtable
+{
+ margin:3%;
+ 
+}
+
+.standingtableuser
+{
+        color:#333333;
+}
+
+.standingtableuser:hover
+{
+
+        color:#333333;
+}
+
+.standingtableusermatch
+{
+        color:#FFFFFF;
+}
+
+.standingtableusermatch:hover
+{
+
+        color:#FFFFFF;
 }
