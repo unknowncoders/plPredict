@@ -5,7 +5,7 @@
 @stop
 
 @section ('content')
-    <div style="background-color:white; margin-top: 200px">
+    <div class="thumbnail standingouter">
             <ul class="nav nav-tabs">
                 <li class="{{$activeTabs[0]}}"><a data-toggle="tab" href="#overall" class="showtabs">Overall</a></li>
                 <li class="{{$activeTabs[1]}}"><a data-toggle="tab" href="#monthly" class="showtabs">Monthly</a></li>
@@ -15,93 +15,159 @@
             <div class="tab-content">
 
                     <div id="overall" class="tab-pane {{$activeTabs[0]}}">
+ 
+                       <br><br>
+                       <h2 style="margin:3%"><strong> Overall </strong> </h2>
+                       <br>
+      
+                  <div class="standingtable">
+                         <table class="table ">
+                           <thead>
+                              <tr>
+                                 <th>Rank</th>
+                                 <th>Username</th>
+                                 <th>Total</th>
+                               </tr>
+                           </thead>
+                           <tbody> 
+                    
+                                @foreach ($users  as $userInst)
+                                  
+                                 @if($user == $userInst)
+ 
+                                   <tr style="background-color:#75A3D1; color:#FFFFFF">
+                                   <td> {{ $userInst->rank }}</td>
+                                   <td> <a href="/users/{{ $userInst->username }}" class="standingtableusermatch">{{ $userInst->username }} </a> </td>
+                                   <td> {{ $userInst->score }}</td>
+                                   </tr> 
 
-                        <strong> Overall </strong> <br>
+                                 @else
+                                   <tr>
+                                   <td> {{ $userInst->rank }}</td>
+                                   <td> <a href="/users/{{ $userInst->username }}" class="standingtableuser">{{ $userInst->username }} </a> </td>
+                                   <td> {{ $userInst->score }}</td>
+                                   </tr> 
+                                 @endif
 
-                        @if ($user)
-                            
-                            {{ $user->rank }}: <a href="/users/{{ $user->username }}">{{ $user->username }} </a> | {{ $user->score }}<br><br>
-
-                        @endif
-
-                        @foreach ($users  as $userInst)
-
-                            {{ $userInst->rank }}: <a href="/users/{{ $userInst->username }}">{{ $userInst->username }} </a> | {{ $userInst->score }}<br>
-                        
-                        @endforeach 
-
+                                @endforeach 
+                         </tbody>
+                      </table>
+                  </div>
 
                     </div>
 
                     <div id="monthly" class="tab-pane {{$activeTabs[1]}}">
 
-                        @foreach ($months as $month)
+                     <div class="dropdown " style="float:right; margin-top:10px;">
+                        <button class="btn gameweekdropdown" type="button" data-toggle="dropdown">Month
+                          <span class="caret"></span></button>
+                      
+                          <ul class="dropdown-menu">
+                          
+                               @foreach ($months as $month)
+                                    <li><a href="/standings/month/{{$month->id}}">{{ $month->name }} </a></li>
+                                @endforeach
 
-                            <a href="/standings/month/{{$month->id}}">{{ $month->name }} </a>
+                         </ul>
+                 
+                     </div> 
+                     <br><br> 
+                      <h2 style="margin:3%"><strong> {{$month->name }} </strong></h2>
+                      <br>
+          
+              <div class="standingtable">
+                         <table class="table ">
+                           <thead>
+                              <tr>
+                                 <th>Rank</th>
+                                 <th>Username</th>
+                                 <th>Total</th>
+                               </tr>
+                           </thead>
+                           <tbody> 
+                    
+                          @foreach ($monthUsers  as $userInst)
 
-                        @endforeach
+                                 @if($user->username == $userInst->username)
+                             
+                                     <?php $monthUser =$userInst->months()->where('month_id',$month->id)->first(); ?> 
+                      
+                                    <tr style="background-color:#75A3D1; color:#FFFFFF"> 
+                                        <td> {{ $monthUser->pivot->rank }}</td>
+                                        <td> <a href="/users/{{ $userInst->username }}" class="standingtableusermatch">{{ $userInst->username }} </a></td>
+                                        <td> {{ $userInst->gameweeks()->where('month_id',$month->id)->sum('score') }}</td>
+                                     </tr> 
+                            @else
+                             <?php $monthUser =$userInst->months()->where('month_id',$month->id)->first(); ?> 
+              
+                            <tr> 
+                                <td> {{ $monthUser->pivot->rank }}</td>
+                                <td> <a href="/users/{{ $userInst->username }}" class="standingtableuser">{{ $userInst->username }} </a></td>
+                                <td> {{ $userInst->gameweeks()->where('month_id',$month->id)->sum('score') }}</td>
+                             </tr> 
+                             @endif                           
 
-                        <strong> {{$month->name }} </strong><br>
-                        @if ($user)
-                            
-                            <?php $monthUser =$user->months()->where('month_id',$month->id)->first(); ?> 
-                            @if ($monthUser){{ $monthUser->pivot->rank }} @else - @endif :
-                                <a href="/users/{{ $user->username }}">{{ $user->username }} </a> | 
-                                @if ($monthUser) 
-                                    {{ $user->gameweeks()->where('month_id',$month->id)->sum('score') }}
-                                @else - @endif
-
-                            <br><br>
-
-                        @endif
-
-                        @foreach ($monthUsers  as $userInst)
-
-                            <?php $monthUser =$userInst->months()->where('month_id',$month->id)->first(); ?> 
-                            {{ $monthUser->pivot->rank }}: <a href="/users/{{ $userInst->username }}">{{ $userInst->username }} </a> | {{ $userInst->gameweeks()->where('month_id',$month->id)->sum('score') }}<br>
-                        
-                        @endforeach 
+                            @endforeach 
+                        </tbody>
+                       </table>
+                    </div>
                     </div>
 
                     <div id="weekly" class="tab-pane {{$activeTabs[2]}}">
 
-                        @foreach ($gameweeks as $gameweekInst)
 
-                            <a href="/standings/gameweek/{{$gameweekInst->id}}">Gameweek {{ $gameweekInst->id }} </a>
-
-                        @endforeach
-
-                            <strong> Gameweek {{ $gameweek->id }} </strong><br>
-
-                        @if ($user)
-                            
-                            <?php $gameweekUser =$user->gameweeks()->where('gameweek_id',$gameweek->id)->first(); ?> 
-
-                            @if ($gameweekUser)
-                                    {{ $gameweekUser->pivot->rank }} 
-                            @else - @endif :
-                                    <a href="/users/{{ $user->username }}">{{ $user->username }} </a> | 
-
-                            @if ($gameweekUser)
-
-                            {{ $gameweekUser->pivot->score }}
-                            
-                            @else 
-                                    -
-
-                            @endif
+                     <div class="dropdown " style="float:right; margin-top:10px;">
+                        <button class="btn gameweekdropdown" type="button" data-toggle="dropdown">Gameweek
+                          <span class="caret"></span></button>
+                      
+                          <ul class="dropdown-menu">
+                                  @foreach ($gameweeks as $gameweekInst)
+                                   <li> <a href="/standings/gameweek/{{$gameweekInst->id}}">Gameweek {{ $gameweekInst->id }} </a></li>
+                                  @endforeach
+                          </ul>
+                 
+                     </div> 
 
                             <br><br>
+                           <h2 style="margin:3%"> <strong> Gameweek {{ $gameweek->id }} </strong></h2>
+                           <br>
+  
+                     <div class="standingtable">
+                        <table class="table ">
+                           <thead>
+                              <tr>
+                                 <th>Rank</th>
+                                 <th>Username</th>
+                                 <th>Total</th>
+                               </tr>
+                           </thead>
+                           <tbody> 
 
-                        @endif
+                                @foreach ($gameweekUsers  as $userInst)
 
-                        @foreach ($gameweekUsers  as $userInst)
+                                @if($user->username == $userInst->username)
 
-                            <?php $gameweekUser =$userInst->gameweeks()->where('gameweek_id',$gameweek->id)->first(); ?> 
+                                 <tr style="background-color:#75A3D1; color:#FFFFFF">
+                                    <?php $gameweekUser =$userInst->gameweeks()->where('gameweek_id',$gameweek->id)->first(); ?> 
+                                     <td> {{ $gameweekUser->pivot->rank }} </td>
+                                     <td> <a href="/users/{{ $userInst->username }}" class="standingtableusermatch">{{ $userInst->username }} </a></td>
+                                     <td> {{ $gameweekUser->pivot->score }}</td>
+                                  </tr> 
 
-                            {{ $gameweekUser->pivot->rank }}: <a href="/users/{{ $userInst->username }}">{{ $userInst->username }} </a> | {{ $gameweekUser->pivot->score }}<br>
-                        
-                        @endforeach 
+                                  @else
+
+                                 <tr>
+                                    <?php $gameweekUser =$userInst->gameweeks()->where('gameweek_id',$gameweek->id)->first(); ?> 
+                                     <td> {{ $gameweekUser->pivot->rank }} </td>
+                                     <td> <a href="/users/{{ $userInst->username }}" class="standingtableuser">{{ $userInst->username }} </a></td>
+                                     <td> {{ $gameweekUser->pivot->score }}</td>
+                                  </tr> 
+                              @endif 
+                                  @endforeach 
+
+                           </tbody>
+                        </table>
+                    </div>
                     </div>
             </div>
     </div>

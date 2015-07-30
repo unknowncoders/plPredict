@@ -7,19 +7,19 @@
 
        <ul class= "nav nav-tabs navbar-left " style="margin-bottom:10px">
         @if ($nameOfPage == 'home')
-         <li role="presentation" ><a href="/predict" class="colorwhite"><strong><u>Predict</u></strong></a></li>
+         <li role="presentation" class="active" ><a href="/predict" class="colorwhite "><strong>Predict</strong></a></li>
         @else
          <li role="presentation" ><a href="/predict" class="colorwhite"><strong>Predict</strong></a></li>
         @endif
 
         @if ($nameOfPage == 'badges')
-         <li role="presentation" ><a href="/badges"class ="colorwhite"><strong><u>Badges</u></strong></a></li>
+         <li role="presentation"class="active" ><a href="/badges"class ="colorwhite "><strong>Badges</strong></a></li>
         @else
          <li role="presentation" ><a href="/badges"class ="colorwhite"><strong>Badges</strong></a></li>
         @endif
 
         @if ($nameOfPage == 'standings')
-         <li role="presentation" ><a href="/standings"class ="colorwhite"><strong><u>Standings</u></strong></a></li>
+         <li role="presentation" class="active" ><a href="/standings"class ="colorwhite "><strong>Standings</strong></a></li>
         @else
          <li role="presentation" ><a href="/standings"class ="colorwhite"><strong>Standings</strong></a></li>
         @endif
