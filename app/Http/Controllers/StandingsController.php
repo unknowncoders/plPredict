@@ -11,15 +11,48 @@ class StandingsController extends Controller
 {
         public function index(\App\Gameweek $gameweek = null,\App\Month $month = null){
 
-                $users = \App\User::orderBy('rank')->paginate(40);
+                $user = null;
+                $users = \App\User::ranked()->orderBy('rank')->get();
+                //$users->setPageName('opage');
+                $lastFixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
 
-                if($gameweek and $gameweek->complete){
+                $activeTabs = ['active','',''];
 
-                }else if($month and $month->hasCompletedGameweeks()){
 
+                if(!$month or !$month->hasCompletedGameweek()){
+                        $month = $lastFixture->gameweek->month;
                 }else{
 
+                        $activeTabs = ['','active',''];
                 }
+
+                if(!$gameweek or !$gameweek->hasCompletedFixture()){
+                        $gameweek = $lastFixture->gameweek;
+                }else{
+                        $activeTabs = ['','','active'];
+                }
+                
+
+                if(\Auth::check()){
+                        $user = \Auth::user();
+                }
+
+                    $months = \App\Month::orderBy('id','desc')->get()->filter(function ($month){
+                                                    return $month->hasCompletedGameweek();
+                                            });
+
+                    $gameweeks = \App\Gameweek::orderBy('id','desc')->get()->filter(function ($gw){
+                                                    return $gw->hasCompletedFixture(); 
+                                            });
+
+
+                        $gameweekUsers = $gameweek->predictors()->orderBy('gameweek_user.rank','asc')->get();
+
+                        $monthUsers = $month->users()->orderBy('month_user.rank','asc')->get();
+
+                $nameOfPage = 'standings';
+
+                return view('pages.standings',compact('gameweeks','months','users','gameweekUsers','monthUsers','month','gameweek','user','activeTabs','nameOfPage'));
 
         }
 }

@@ -18,7 +18,7 @@ class Month extends Model
                 return $this->belongsToMany('App\User','month_user');
         }
 
-        public function hasCompletedGameweeks(){
+        public function hasCompletedGameweek(){
 
                 if($this->gameweeks()->complete()->count() != 0){
                         return true;

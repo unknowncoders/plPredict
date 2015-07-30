@@ -67,7 +67,7 @@ class UserTableSeeder extends Seeder
                          'provider_id'=>'1028607243830630',
                          'club_id'=>null,
                          'score'=>0,
-                         'rank'=>'',
+                         'rank'=>null,
                         ],
                     ]);
 

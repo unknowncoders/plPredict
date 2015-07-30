@@ -13,11 +13,14 @@ class BadgeController extends Controller
 
                 $badges = \App\Badge::all();
 
+                $nameOfPage = 'badges';
+
                 if(\Auth::check()){
                     $user = \Auth::user();
-                    return view('badges.index',compact('badges','user'));
+                    return view('badges.index',compact('badges','user','nameOfPage'));
                 }
 
-                return view('badges.index',compact('badges'));
+
+                return view('badges.index',compact('badges','nameOfPage'));
         }
 }

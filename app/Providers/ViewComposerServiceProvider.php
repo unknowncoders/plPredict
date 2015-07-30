@@ -32,13 +32,20 @@ class ViewComposerServiceProvider extends ServiceProvider
                     $logged_in = false;
                     $onLogin = false;
 
+
                     if(\Auth::check()){
                             $logged_in = true;
                                 $view->with('authUser',\Auth::user());
                     }
+
                     if(isset($view->onLoginPage)){
                             $onLogin = true;
                     }
+
+                    if(!isset($view->nameOfPage)){
+                            $view->with('nameOfPage','unknown');
+                    }
+
                     $view->with('logged_in',$logged_in)->with('onLogin',$onLogin);
             });
     }

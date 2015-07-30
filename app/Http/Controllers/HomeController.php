@@ -33,8 +33,9 @@ class HomeController extends Controller
                         }])
                         ->get();
 
+            $nameOfPage = 'home';
 
-            return view('pages.home',compact('gws','user')); 
+            return view('pages.home',compact('gws','user','nameOfPage')); 
     }
 
 }
