@@ -56,8 +56,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return $this->belongsToMany('App\Month','month_user')->withPivot('rank');
     }
 
+    public function admin(){
+            return $this->hasOne('App\Admin');
+    }
+
     public function scopeRanked($query){
            $query->whereNotNull('rank'); 
+    }
+
+    public function isAdmin(){
+
+            if($this->admin()->count() == 0){
+                    return false;
+            }
+
+            return true;
     }
 
 }
