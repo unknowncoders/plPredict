@@ -27,19 +27,21 @@
                    {{$badge->icon_path}}
                    
                    @if ($badge->users()->where('user_id',$user->id)->count()!=0)
-                      <i class="fa fa-star badgestar"></i>
+                      <i class="fa fa-star fa-2x badgestar"></i>
                     @endif
 
 
-                 <h3 class="badgetext">     <img class="img-circle" width="70" height="70" src="{{ URL::asset('image/Soccer.png') }}" alt="coming"></img> 
+                 <h3 class="badgetext">     <img class="img-circle" width="60" height="60" src="{{ URL::asset('image/Soccer.png') }}" alt="coming"></img> 
                 
                  {{ $badge->name }}
 
                  </h3>
+ 
                    <hr>
-                <p class="badgedesription">   {{$badge->description}} </p>
 
-                                    </div>
+                <p class="badgedesription"> {{$badge->description}} </p>
+
+                </div>
 
                 @endforeach
 
