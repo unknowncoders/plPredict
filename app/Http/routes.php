@@ -63,6 +63,20 @@
         Route::post('complete','UserController@postComplete');
 
 
+/*
+ * Admin routes -----------------------------------------------------
+ *
+ */
+
+Route::group(['prefix'=>'admin','middleware'=>'admin','namespace'=>'Admin'],function(){
+
+        Route::pattern('id','[0-9]+');
+
+        Route::get('/','DashboardController@index');
+
+
+});
+
 
 
 

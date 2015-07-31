@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 class StandingsController extends Controller
 {
+        public function __construct(){
+               $this->middleware('auth'); 
+        }
+
         public function index(\App\Gameweek $gameweek = null,\App\Month $month = null){
 
                 $user = null;
