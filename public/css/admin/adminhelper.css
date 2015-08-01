@@ -53,17 +53,6 @@ body {
         background-color: #ed586c;
 }
 
-.flexbox {
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        overflow: hidden;
-}
-
-.flexbox .col-equal {
-        flex: 1;
-}
-
 #page-content {
 
 }

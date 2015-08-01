@@ -27,7 +27,12 @@
                                     <img class="col-sm-12" src="pics/{{ $pic->path }}"/>
                                     <div class="pic-inner-label">Path: {{ $pic->path }} </div>
                                     <div class="pic-inner-label">
-                                            <a href="{{ route('admin.pic.edit',$pic->id)}}">Edit</a>
+                                            <button class="btn btn-primary"><a href="{{ route('admin.pic.edit',$pic->id)}}">Edit</a></button>
+                                            <div>
+                                                    {!! Form::open(['action'=>['Admin\PicController@destroy',$pic->id],'method'=>'DELETE']) !!}
+                                                            {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
+                                                    {!! Form::close() !!}
+                                            </div>
                                     </div>
                             </div>
                     @endforeach

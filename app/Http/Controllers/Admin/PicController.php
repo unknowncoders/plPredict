@@ -23,16 +23,6 @@ class PicController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -40,7 +30,9 @@ class PicController extends Controller
      */
     public function store(PicRequest $request)
     {
-            return $request->all();
+            $pic = new Pic(['path'=>$request->path]);
+            $pic->save();
+            return redirect('/admin/pic');
     }
 
 
@@ -66,7 +58,11 @@ class PicController extends Controller
      */
     public function update(PicRequest $request, $id)
     {
-        //
+            $pic = Pic::findOrFail($id);
+            $pic->path = $request->path;
+            $pic->save();
+
+            return redirect('/admin/pic');
     }
 
     /**
@@ -77,6 +73,9 @@ class PicController extends Controller
      */
     public function destroy($id)
     {
-        //
+            $pic = Pic::find($id);
+            $pic->delete();
+
+            return redirect('/admin/pic');
     }
 }

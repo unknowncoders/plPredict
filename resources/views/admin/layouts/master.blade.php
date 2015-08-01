@@ -16,13 +16,13 @@
     <body>
                 <div id="container">
                         @include('admin.partials.horizontal_nav')
-                        <div id="page-wrapper" class="flexbox">
+                        <div id="page-wrapper">
                                     <div class="row">
-                                            <div class="col-equal col-sm-3">
+                                            <div class="col-sm-3">
                                                 @include('admin.partials.vertical_nav')
                                             </div>
 
-                                            <div class="col-equal col-sm-9" id="page-content">
+                                            <div class="col-sm-9" id="page-content">
                                                 @yield('content')
                                             </div>
                                     </div>
