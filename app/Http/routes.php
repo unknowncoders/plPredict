@@ -45,7 +45,6 @@
 
     Route::get('users/{username}','UserController@show');
     Route::get('users/{username}/gameweek/{gwid}','UserController@show');
-    Route::get('users/{username}/badges','User\BadgeController@index');
 
 /* -----------------------------------------------------------------------*/
 
@@ -73,6 +72,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin','namespace'=>'Admin'],func
         Route::pattern('id','[0-9]+');
 
         Route::get('/','DashboardController@index');
+
+        Route::resource('pic','PicController',['except'=>['show','create']]);
 
 
 });
