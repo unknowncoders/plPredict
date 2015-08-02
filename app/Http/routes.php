@@ -35,7 +35,7 @@
 
     Route::get('faq','PagesController@faq');
     Route::get('rules','PagesController@rules');
-
+    
 /* -----------------------------------------------------------------------*/
 
 /*
@@ -74,6 +74,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin','namespace'=>'Admin'],func
         Route::get('/','DashboardController@index');
 
         Route::resource('pic','PicController',['except'=>['show','create']]);
+        Route::resource('club','ClubController',['except'=>['show','create']]);
 
 
 });

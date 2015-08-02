@@ -1,0 +1,25 @@
+.club-unit {
+        padding: 20px;
+        text-align: center;
+}
+
+.club-image-container {
+    padding: 10px;
+}
+
+.club-img {
+        height: 100px;
+}
+
+.club-pic-label {
+       padding: 10px; 
+       margin-bottom: 10px;
+}
+
+.club-pic-label a {
+        color: #fff;
+}
+
+.club-pic-label div {
+        display: inline-block;
+}
