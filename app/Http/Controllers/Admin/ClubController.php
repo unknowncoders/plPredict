@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\Admin\ClubRequest;
 use App\Http\Controllers\Controller;
+
 use App\Club;
 use App\Pic;
 
@@ -95,6 +96,9 @@ class ClubController extends Controller
      */
     public function destroy($id)
     {
-        //
+            $club = Club::findOrFail($id);
+            $club->delete();
+
+            return redirect('/admin/club');
     }
 }

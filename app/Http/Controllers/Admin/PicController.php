@@ -73,7 +73,7 @@ class PicController extends Controller
      */
     public function destroy($id)
     {
-            $pic = Pic::find($id);
+            $pic = Pic::findOrFail($id);
             $pic->delete();
 
             return redirect('/admin/pic');

@@ -57,3 +57,28 @@ body {
 
 }
 
+.resource-unit {
+        padding: 20px;
+        text-align: center;
+}
+
+.resource-img-container {
+    padding: 10px;
+}
+
+.resource-img {
+        height: 100px;
+}
+
+.resource-inner-label {
+       padding: 10px; 
+       margin-bottom: 10px;
+}
+
+.resource-inner-label a {
+        color: #fff;
+}
+
+.resource-inner-label div {
+        display: inline-block;
+}

@@ -5,7 +5,6 @@
 @stop
 
 @section('header')
-        <link rel="stylesheet" href="{{ URL::asset('css/admin/pichelper.css') }}">
 @stop
 
 
@@ -23,10 +22,10 @@
             <div class="col-sm-12 col-md-8 col-md-offset-2">
                     <h2> All pics </h2>
                     @foreach($pics as $pic)
-                            <div class="pic-unit col-sm-6">
+                            <div class="resource-unit col-sm-6">
                                     <img class="col-sm-12" src="pics/{{ $pic->path }}"/>
-                                    <div class="pic-inner-label">Path: {{ $pic->path }} </div>
-                                    <div class="pic-inner-label">
+                                    <div class="resource-inner-label">Path: {{ $pic->path }} </div>
+                                    <div class="resource-inner-label">
                                             <button class="btn btn-primary"><a href="{{ route('admin.pic.edit',$pic->id)}}">Edit</a></button>
                                             <div>
                                                     {!! Form::open(['action'=>['Admin\PicController@destroy',$pic->id],'method'=>'DELETE']) !!}
