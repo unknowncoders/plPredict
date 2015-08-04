@@ -38,7 +38,7 @@ class Fixture extends Model
         }
 
         public function isClosed(){
-                //A fixtureis closed 1 hour before kickoff
+                //A fixture is closed 1 hour before kickoff
                 return ($this->kickoff < \Carbon\Carbon::now()->addHour(1));
         }
 

@@ -34,6 +34,17 @@ class Gameweek extends Model
                 return $this->hasManyThrough('App\Prediction','App\Fixture');
         }
 
+        public function started(){
+                $fixtures = $this->fixtures()->get()->filter(function ($fxt) { return $fxt->isClosed(); });
+
+                if($fixtures->count()!=0){
+                        return true;
+                }
+
+                return false;
+                
+        }
+
         public function hasCompletedFixture(){
                 if( $this->fixtures()->over()->count()!=0){
                         return true;

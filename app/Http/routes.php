@@ -78,6 +78,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin','namespace'=>'Admin'],func
         Route::resource('badge','BadgeController',['except'=>['show','create']]);
         Route::resource('user','UserController',['only'=>['index','destroy']]);
         Route::resource('admin','AdminController',['only'=>['index','store','destroy']]);
+        Route::resource('gameweek','GameweekController');
 
 });
 
