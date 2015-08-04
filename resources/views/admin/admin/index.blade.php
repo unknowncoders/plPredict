@@ -33,6 +33,7 @@
                          <tr>
                                  <th>Username</th> 
                                  <th>Appointed on</th> 
+                                 <th>Actions</th> 
                          </tr>
 
                         <?php $cnt = 0; ?>
@@ -42,6 +43,11 @@
                                 <td>{{ $admin->user->username }}</td> 
                                 <td>
                                      {{ $admin->created_at }} 
+                                </td>
+                                <td>
+                                        {!! Form::open(['action'=>['Admin\AdminController@destroy',$admin->id],'method'=>'DELETE']) !!}
+                                                {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
+                                        {!! Form::close() !!}
                                 </td>
                         </tr>
 
