@@ -24,15 +24,6 @@ class BadgeController extends Controller
             return view('admin.badge.index',compact('badges'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -52,16 +43,6 @@ class BadgeController extends Controller
             return redirect('/admin/badge');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

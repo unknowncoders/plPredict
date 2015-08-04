@@ -14,8 +14,8 @@ class AdminTableSeeder extends Seeder
             DB::table('admins')->delete();
 
             DB::table('admins')->insert([
-                    ['user_id'=>1],
-                    ['user_id'=>2],
+                    ['user_id'=>1,'created_at'=>\Carbon\Carbon::now()],
+                    ['user_id'=>2,'created_at'=>\Carbon\Carbon::now()],
                     ]);
 
     }
