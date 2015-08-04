@@ -36,6 +36,8 @@ class PredictionController extends Controller
                 }
 
                 foreach($predictions as $prediction){
+                        $fxt = \App\Fixture::findOrFail($prediction['fixture_id']);
+                        if($fxt->isClosed()){ continue; }
                         $pred = \App\Prediction::firstOrNew(['user_id'=>$prediction['user_id'],'fixture_id'=>$prediction['fixture_id']]);
 
                         $pred->home_score = $prediction['home_score'];
