@@ -81,6 +81,11 @@ class GameweekController extends Controller
             $gameweek->pendingFixtures = $gameweek->fixtures()->get()->filter(function($fxt){
                         return ($fxt->isClosed() and !$fxt->isOver());
             }); 
+
+            $gameweek->upcomingFixtures = $gameweek->fixtures()->get()->filter(function($fxt){
+                        return !$fxt->isClosed();
+            });
+                
             return view('admin.gameweek.show',compact('gameweek'));
     }
 

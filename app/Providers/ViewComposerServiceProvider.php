@@ -16,6 +16,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
             $this->composeNavigation();
             $this->composeProfileBox();
+            $this->composeAdminVerticalNav();
     }
 
     /**
@@ -57,6 +58,16 @@ class ViewComposerServiceProvider extends ServiceProvider
                     if(!isset($view->user)){
                             $view->with('user',\Auth::user());
                     }
+
+            });
+
+    }
+
+    private function composeAdminVerticalNav(){
+
+            view()->composer('admin.partials.vertical_nav',function($view){
+
+                    
 
             });
 

@@ -11,7 +11,5 @@
                 <h3>Gameweek {{ $gameweek->id }}</h3>
 
             </div>
-    
-    
 
 @stop

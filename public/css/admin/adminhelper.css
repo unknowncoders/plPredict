@@ -35,17 +35,18 @@ body {
 }
 
 #vertical-nav {
-        background-color:#3f475b; 
         border-left: solid 3px #ed586c;
-        font-size: 1.1em;
+        border-right: solid 1px #887799;
+        font-size: 1.3em;
 }
 
 .nav-pills li.active {
-        background-color: #ed586c;
+        text-decoration: underline;
 }
 
 #vertical-nav a {
-        color: #fff;
+        background-color:#fff; 
+        color: #101020;
         border-radius: 0;
 }
 
