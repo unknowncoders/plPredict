@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Gameweek;
 use App\Month;
+use App\Club;
 
 class GameweekController extends Controller
 {
@@ -85,8 +86,13 @@ class GameweekController extends Controller
             $gameweek->upcomingFixtures = $gameweek->fixtures()->get()->filter(function($fxt){
                         return !$fxt->isClosed();
             });
+
+            $gameweek->fxtCnt = $gameweek->overFixtures->count() 
+                                + $gameweek->pendingFixtures->count() 
+                                + $gameweek->upcomingFixtures->count();
                 
-            return view('admin.gameweek.show',compact('gameweek'));
+            $clubs = Club::lists('name','id')->toArray();
+            return view('admin.gameweek.show',compact('gameweek','clubs'));
     }
 
     /**
