@@ -36,7 +36,13 @@
                    <strong><h2> Gameweek {{ $gameweekInFocus->id}}</strong></h2>
                    <hr>
                
-                <?php $boostId = $user->gameweeks()->where('gameweek_id',$gameweekInFocus->id)->first()->pivot->boost_id; ?>
+                        <?php 
+                            $gw_inst = $user->gameweeks()->where('gameweek_id',$gameweekInFocus->id)->first();
+                            $boostId = null;
+                                if($gw_inst){
+                                $boostId = $gw_inst->pivot->boost_id; 
+                                }
+                        ?>
 
                  </div>
                   <br><br><br><br><br><br><br><br>

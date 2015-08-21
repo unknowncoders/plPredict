@@ -82,6 +82,8 @@ Route::group(['prefix'=>'admin','middleware'=>'admin','namespace'=>'Admin'],func
         Route::resource('fixture','FixtureController');
 
         Route::post('fixture/{fixture}/compute','FixtureController@compute');
+        Route::post('gameweek/{gameweek}/compute','GameweekController@compute');
+        Route::post('gameweek/{gameweek}/complete','GameweekController@complete');
         
 });
 

@@ -36,6 +36,15 @@
                             <a href="{{ url('/admin/gameweek',$rgw->id) }}">Gameweek {{ $rgw->id }}</a><br>
                                     [{{ $rgw->overFixtureCnt }} over,<span style="color:red">{{ $rgw->pendingFixtureCnt }} pending</span>] out of {{ $rgw->fixtures->count() }} fixtures
                                 
+                                    {!! Form::open(['action'=>['Admin\GameweekController@compute',$rgw->id],'method'=>'POST']) !!}
+                                            {!! Form::submit('Compute',['class'=>'btn btn-info']) !!}
+                                    {!! Form::close() !!}
+
+                                    @if ( $rgw->overFixtureCnt == $rgw->fixtures->count())
+                                    {!! Form::open(['action'=>['Admin\GameweekController@complete',$rgw->id],'method'=>'POST']) !!}
+                                            {!! Form::submit('Set as Complete',['class'=>'btn btn-info']) !!}
+                                    {!! Form::close() !!}
+                                    @endif
                     </div>
 
                 @endforeach
@@ -56,6 +65,9 @@
                     
                     <div>
                             <a href="{{ url('/admin/gameweek',$cgw->id) }}">Gameweek {{ $cgw->id }}</a>
+                                    {!! Form::open(['action'=>['Admin\GameweekController@compute',$cgw->id],'method'=>'POST']) !!}
+                                            {!! Form::submit('Compute',['class'=>'btn btn-info']) !!}
+                                    {!! Form::close() !!}
                     </div>
 
                 @endforeach

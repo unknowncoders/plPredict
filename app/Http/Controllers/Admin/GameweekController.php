@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Gameweek;
+use App\Prediction;
+use App\Fixture;
 use App\Month;
 use App\Club;
 
@@ -127,5 +129,80 @@ class GameweekController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function compute($id)
+    {
+            $gameweek = Gameweek::find($id);
+            $this->performComputations($gameweek);
+
+            return redirect('/admin/gameweek');
+
+    }
+
+    public function complete($id)
+    {
+            $gameweek = Gameweek::find($id);
+            $this->performComputations($gameweek);
+            $gameweek->complete = true;
+
+            $gameweek->save();
+
+            return redirect('/admin/gameweek');
+    }
+
+    private function performComputations($gameweek)
+    {
+            $users = $gameweek->predictors;
+            $month = $gameweek->month;
+            $allGameweeks = $month->gameweeks()->get()->filter(function($gw_inst){
+                                    return $gw_inst->hasCompletedFixture();
+            });
+
+            //Gameweek User Score
+            foreach($users as $user){
+
+                    $gameweekExists = $user->gameweeks->contains($gameweek->id);
+
+                    if(!$gameweekExists){ continue; }
+
+                    $predictions = $gameweek->predictions()->where('user_id',$user->id)->get();
+
+                    $score = 0;
+                    foreach($predictions as $prediction){
+                            $score += $prediction->score();
+                    }
+
+                    //$user->gameweekScore = $score;
+
+                    $user->gameweeks()->updateExistingPivot($gameweek->id,['score'=>$score],false);
+
+                    $monthExists = $user->months->contains($month->id);
+
+                    if(!$monthExists){  
+                            $user->months()
+                                 ->attach($month->id,['rank'=>null]);
+                    }
+
+                    $monthScore = 0;
+                    foreach($allGameweeks as $gw){
+                            $gw_user = $user->gameweeks()->where('gameweek_id',$gw->id)->first();
+                            if($gw_user){
+                                $monthScore += $gw_user->pivot->score;
+                            }
+                    }
+
+                    //$user->monthScore = $monthScore;
+
+                    $overallScore = 0;
+                    foreach($user->gameweeks as $ugw){
+                            $overallScore += $user->gameweeks()->where('gameweek_id',$ugw->id)->first()->pivot->score;
+                    }
+
+                    $user->score = $overallScore;
+
+                    $user->save();
+
+            }
     }
 }

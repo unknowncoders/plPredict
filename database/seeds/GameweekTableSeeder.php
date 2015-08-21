@@ -14,7 +14,7 @@ class GameweekTableSeeder extends Seeder
             DB::table('gameweeks')->delete();
 
             DB::table('gameweeks')->insert([
-                        ["month_id"=>7,"complete"=>true],
+                        ["month_id"=>7,"complete"=>''],
                         ["month_id"=>8,"complete"=>''],
                         ["month_id"=>8,"complete"=>''],
                         ["month_id"=>8,"complete"=>''],
