@@ -34,7 +34,15 @@ class Fixture extends Model
         }
 
         public function scopeOver($query){
-                $query->whereNotNull('home_score')->whereNotNull('away_score');
+                $query->where('over',true);
+        }
+
+        public function scopeClosed($query){
+                $query->where('kickoff','<',\Carbon\Carbon::now()->addHour(1));
+        }
+
+        public function scopeOpen($query){
+                $query->where('kickoff','>',\Carbon\Carbon::now()->addHour(1));
         }
 
         public function isClosed(){

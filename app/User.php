@@ -49,7 +49,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function gameweeks(){
-            return $this->belongsToMany('App\Gameweek','gameweek_user')->withPivot('score','rank');
+            return $this->belongsToMany('App\Gameweek','gameweek_user')->withPivot('score','rank','boost_pid');
     }
 
     public function months(){

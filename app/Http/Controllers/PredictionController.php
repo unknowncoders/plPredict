@@ -19,8 +19,8 @@ class PredictionController extends Controller
         public function store(Request $request){
                 $input = $request->all();
 
-
                 $predictions =[];
+                
 
                 foreach($input['home_score'] as $key => $score){
                         $predictions[$key]['home_score'] = $score;
@@ -43,7 +43,19 @@ class PredictionController extends Controller
                         $pred->home_score = $prediction['home_score'];
                         $pred->away_score = $prediction['away_score'];
 
+
                         if($pred->valid()){
+                                $user = \App\User::find($prediction['user_id']);
+                                $gameweek = $pred->fixture->gameweek;
+                                $exists = $user->gameweeks->contains($gameweek->id);
+                                if(!$exists){
+                                        $user->gameweeks()
+                                                ->attach($gameweek->id,['score'=>0,'rank'=>null,'boost_pid'=>null]);
+                                }
+
+                                if($pred->fixture_id == $input['boost_pid']){
+                                        $user->gameweeks()->updateExistingPivot($gameweek->id,['boost_pid'=>$input['boost_pid']],false);
+                                }
                                 $pred->save();
                         }
                 }

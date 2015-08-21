@@ -33,6 +33,20 @@ class HomeController extends Controller
                         }])
                         ->get();
 
+            foreach($gws as $gw){
+                    $userGameweek = $user->gameweeks()->where('gameweek_id',$gw->id)->first();
+
+                    $boostId = null;
+                    $boostedClosed = false;
+                    if($userGameweek){
+                        $boostId = $userGameweek->pivot->boost_pid; 
+                        if($boostId) $boostedClosed = \App\Fixture::find($boostId)->isClosed();
+                    }
+
+                    $gw->boostId = $boostId;
+                    $gw->boostedClosed = $boostedClosed;
+            }
+
             $nameOfPage = 'home';
 
             return view('pages.home',compact('gws','user','nameOfPage')); 

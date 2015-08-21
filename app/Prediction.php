@@ -10,7 +10,8 @@ class Prediction extends Model
 
         protected $guarded=[];
 
-        protected $score=[0,2,5,6,7,10];
+        protected $score=[0,2, 5, 6, 7,10,
+                          0,4,10,12,14,20]; //Boosted points
 
 
         public function user(){
