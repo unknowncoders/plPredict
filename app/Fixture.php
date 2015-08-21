@@ -43,7 +43,7 @@ class Fixture extends Model
         }
 
         public function isOver(){
-                return (isset($this->home_score) && isset($this->away_score));
+                return $this->over;
         }
 
         public function prediction($id){

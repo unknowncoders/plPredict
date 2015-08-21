@@ -21,6 +21,7 @@ class CreateFixturesTable extends Migration
             $table->tinyInteger('away_score')->nullable();
             $table->timestamp('kickoff');
             $table->integer('gameweek_id')->unsigned();
+            $table->boolean('over')->default(false);
             $table->timestamps();
 
             $table->foreign('home_club_id')->references('id')->on('clubs');
