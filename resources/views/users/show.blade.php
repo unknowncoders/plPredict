@@ -36,11 +36,17 @@
                    <strong><h2> Gameweek {{ $gameweekInFocus->id}}</strong></h2>
                    <hr>
                
+                <?php $boostId = $user->gameweeks()->where('gameweek_id',$gameweekInFocus->id)->first()->pivot->boost_id; ?>
+
                  </div>
                   <br><br><br><br><br><br><br><br>
                     @foreach ($gameweekInFocus->fixtures as $fixture)
                                         <div class="col-md-11 col-sm-11 col-lg-5 thumbnail gameweekpredictbox">
                                         <?php $pred = $fixture->predictions()->where('user_id',$user->id)->first(); ?>
+
+                                    @if( $boostId == $fixture->id)
+                                        <span class="colorwhite"> Boosted !! </span>
+                                    @endif
                                      
                                         <span class="badge predictscore"> 
                                            @if ($pred)

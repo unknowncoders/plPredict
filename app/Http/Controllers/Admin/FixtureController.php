@@ -131,12 +131,18 @@ class FixtureController extends Controller
 
             foreach($allPredictions as $prediction){
                     $prediction->grade = $prediction->grading($fixture);
-                    $boostId = $prediction->user->gameweeks()->where('gameweek_id',$fixture->gameweek->id)->first()->pivot->boost_id;
+                    $boostId = $prediction->user->gameweeks()->where('gameweek_id',$gameweek->id)->first()->pivot->boost_id;
                     if($boostId == $prediction->fixture->id){
-                            $prediction->grade += 5;
+                            $prediction->grade += 6;
                     }
                     $prediction->save();
             }
-                    return redirect('/admin/gameweek/'.$gameweek->id);
+
+            if(!$fixture->isOver()){
+                $fixture->over = true;
+                $fixture->save();
+            }
+
+            return redirect('/admin/gameweek/'.$gameweek->id);
     }
 }
