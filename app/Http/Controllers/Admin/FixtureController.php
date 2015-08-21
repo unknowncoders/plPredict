@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\FixtureRequest;
 use App\Http\Controllers\Controller;
 
 use App\Fixture;
+use App\Prediction;
 use App\Club;
 
 class FixtureController extends Controller
@@ -115,5 +116,27 @@ class FixtureController extends Controller
             $fixture->delete();
 
             return redirect('/admin/gameweek/'.$gwId);
+    }
+
+    public function compute($id)
+    {
+            $fixture = Fixture::findOrFail($id);
+            $gameweek = $fixture->gameweek;
+
+            if($fixture->home_score === null or $fixture->away_score === null){
+                    return redirect('/admin/gameweek/'.$gameweek->id);
+            }
+
+            $allPredictions = Prediction::where('fixture_id',$fixture->id)->get();
+
+            foreach($allPredictions as $prediction){
+                    $prediction->grade = $prediction->grading($fixture);
+                    $boostId = $prediction->user->gameweeks()->where('gameweek_id',$fixture->gameweek->id)->first()->pivot->boost_id;
+                    if($boostId == $prediction->fixture->id){
+                            $prediction->grade += 5;
+                    }
+                    $prediction->save();
+            }
+                    return redirect('/admin/gameweek/'.$gameweek->id);
     }
 }

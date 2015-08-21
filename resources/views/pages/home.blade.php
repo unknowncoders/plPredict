@@ -14,7 +14,7 @@
         <div class="col-xs-12  col-sm-8 col-md-9 col-lg-9 predictinfo ">
 
 
-           <strong>  <h1 class="colorwhite">Gameweek {{ $gw->id }} [{{ $gw->boostId }}] </h1> </strong>
+           <strong>  <h1 class="colorwhite">Gameweek {{ $gw->id }}  </h1> </strong>
             <hr>
                 <br>
                     {!! Form::open(['url'=>'predictions']) !!}
@@ -101,12 +101,14 @@
                                 <div class="col-xs-9">
                                         @if(!$gw->boostedClosed)
                                             <div style="font-size: 1.1em; text-align: right;" class="col-xs-4 colorwhite">
-                                                    <label for="boost_pid">Boost:</label>
+                                                    <label for="boost_id">Boost:</label>
                                             </div>
                                             <div class="col-xs-8">
-                                                    <select class="form-control" id="boost_pid" name="boost_pid">
+                                                    <select class="form-control" id="boost_id" name="boost_id">
                                                         @foreach($gw->fixtures()->open()->get() as $cfxt)
-                                                        <option value="{{ $cfxt->id }}" selected="<?php ($gw->boostId == $cfxt->id)?"selected":null;?>">{!!$cfxt->homeClub->name!!} &nbsp vs &nbsp {!!$cfxt->awayClub->name!!}</option>
+                                                        <option value="{{ $cfxt->id }}" <?php if($gw->boostId == $cfxt->id){echo "selected";}?>>
+                                                                {!!$cfxt->homeClub->name!!} &nbsp vs &nbsp {!!$cfxt->awayClub->name!!}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                             </div>

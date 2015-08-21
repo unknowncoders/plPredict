@@ -50,11 +50,11 @@ class PredictionController extends Controller
                                 $exists = $user->gameweeks->contains($gameweek->id);
                                 if(!$exists){
                                         $user->gameweeks()
-                                                ->attach($gameweek->id,['score'=>0,'rank'=>null,'boost_pid'=>null]);
+                                                ->attach($gameweek->id,['score'=>0,'rank'=>null,'boost_id'=>null]);
                                 }
 
-                                if($pred->fixture_id == $input['boost_pid']){
-                                        $user->gameweeks()->updateExistingPivot($gameweek->id,['boost_pid'=>$input['boost_pid']],false);
+                                if($pred->fixture_id == $input['boost_id']){
+                                        $user->gameweeks()->updateExistingPivot($gameweek->id,['boost_id'=>$input['boost_id']],false);
                                 }
                                 $pred->save();
                         }

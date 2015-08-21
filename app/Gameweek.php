@@ -19,7 +19,7 @@ class Gameweek extends Model
         }
 
         public function predictors(){
-                return $this->belongsToMany('App\User','gameweek_user')->withPivot('boost_pid','score','rank');
+                return $this->belongsToMany('App\User','gameweek_user')->withPivot('boost_id','score','rank');
         }
 
         public function scopeIncomplete($query){

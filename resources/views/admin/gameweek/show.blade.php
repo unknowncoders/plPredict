@@ -22,6 +22,10 @@
                                     {!! Form::open(['action'=>['Admin\FixtureController@destroy',$ofxt->id],'method'=>'DELETE']) !!}
                                             {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
                                     {!! Form::close() !!}
+
+                                    {!! Form::open(['action'=>['Admin\FixtureController@compute',$ofxt->id],'method'=>'POST']) !!}
+                                            {!! Form::submit('Compute',['class'=>'btn btn-info']) !!}
+                                    {!! Form::close() !!}
                             </div>
 
 
@@ -40,6 +44,10 @@
                                     {!! Form::open(['action'=>['Admin\FixtureController@destroy',$pfxt->id],'method'=>'DELETE']) !!}
                                             {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
                                     {!! Form::close() !!}
+
+                                    {!! Form::open(['action'=>['Admin\FixtureController@compute',$pfxt->id],'method'=>'POST']) !!}
+                                            {!! Form::submit('Compute',['class'=>'btn btn-info']) !!}
+                                    {!! Form::close() !!}
                             </div>
 
                         @endforeach
@@ -57,6 +65,7 @@
                                     {!! Form::open(['action'=>['Admin\FixtureController@destroy',$ufxt->id],'method'=>'DELETE']) !!}
                                             {!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
                                     {!! Form::close() !!}
+
                             </div>
 
                         @endforeach

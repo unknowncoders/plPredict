@@ -23,7 +23,7 @@ class Prediction extends Model
         }
 
         public function isBoosted(){
-                return ($this->id == $this->fixture->gameweek->predictors()->where('users.id',$this->user_id)->first()->pivot->boost_pid);
+                return ($this->id == $this->fixture->gameweek->predictors()->where('users.id',$this->user_id)->first()->pivot->boost_id);
         }
 
         public function score(){
@@ -40,4 +40,32 @@ class Prediction extends Model
 
                     return false;
         }
+
+        public function grading($fixture){
+
+                    if(( $this->home_score == $fixture->home_score ) and ( $this->away_score == $fixture->away_score )){
+                        //Completely correct !!
+                            return 5;
+                    }
+                    elseif( $fixture->home_score == $fixture->away_score){
+                            if($this->home_score == $this->away_score){
+                                //Correctly predicted draw
+                                    return 3;
+                            }
+                            // Wrong result
+                            return 1;
+                    }
+                    elseif( ($this->home_score - $this->away_score) == ($fixture->home_score - $fixture->away_score)){
+                        // Goal difference correct
+                            return 4;
+                    }elseif((($fixture->home_score > $fixture->away_score) and ($this->home_score > $this->away_score))
+                            or (($fixture->home_score < $fixture->away_score) and ($this->home_score < $this->away_score))){
+                            // Correct Result
+                                    return 2;
+                    }else{
+                            return 1;
+                    }
+        }
+
+
 }

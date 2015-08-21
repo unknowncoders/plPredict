@@ -39,7 +39,7 @@ class HomeController extends Controller
                     $boostId = null;
                     $boostedClosed = false;
                     if($userGameweek){
-                        $boostId = $userGameweek->pivot->boost_pid; 
+                        $boostId = $userGameweek->pivot->boost_id; 
                         if($boostId) $boostedClosed = \App\Fixture::find($boostId)->isClosed();
                     }
 
