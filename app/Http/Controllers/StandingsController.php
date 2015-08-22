@@ -17,13 +17,12 @@ class StandingsController extends Controller
 
                 $user = null;
                 $users = \App\User::ranked()->orderBy('rank')->get();
-                //$users->setPageName('opage');
                 $lastFixture = \App\Fixture::over()->orderBy('kickoff','desc')->first();
 
                 $activeTabs = ['active','',''];
 
 
-                if(!$month or !$month->hasCompletedGameweek()){
+                if(!$month or !$month->hasStarted()){
                         $month = $lastFixture->gameweek->month;
                 }else{
 
@@ -42,7 +41,7 @@ class StandingsController extends Controller
                 }
 
                     $months = \App\Month::orderBy('id','desc')->get()->filter(function ($month){
-                                                    return $month->hasCompletedGameweek();
+                                                    return $month->hasStarted();
                                             });
 
                     $gameweeks = \App\Gameweek::orderBy('id','desc')->get()->filter(function ($gw){
@@ -50,9 +49,9 @@ class StandingsController extends Controller
                                             });
 
 
-                        $gameweekUsers = $gameweek->predictors()->orderBy('gameweek_user.rank','asc')->get();
+                    $gameweekUsers = $gameweek->predictors()->orderBy('gameweek_user.rank','asc')->get();
 
-                        $monthUsers = $month->users()->orderBy('month_user.rank','asc')->get();
+                    $monthUsers = $month->users()->orderBy('month_user.rank','asc')->get();
 
                 $nameOfPage = 'standings';
 

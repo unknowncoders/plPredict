@@ -173,7 +173,6 @@ class GameweekController extends Controller
                             $score += $prediction->score();
                     }
 
-                    //$user->gameweekScore = $score;
 
                     $user->gameweeks()->updateExistingPivot($gameweek->id,['score'=>$score],false);
 
@@ -192,7 +191,6 @@ class GameweekController extends Controller
                             }
                     }
 
-                    //$user->monthScore = $monthScore;
 
                     $overallScore = 0;
                     foreach($user->gameweeks as $ugw){
@@ -203,6 +201,46 @@ class GameweekController extends Controller
 
                     $user->save();
 
+                    $user->gameweekScore = $score;
+                    $user->monthScore = $monthScore;
             }
+
+                    $sortedUsers = $users->sortByDesc('gameweekScore');
+
+            $rnkCnt = 1;
+
+            foreach($sortedUsers as $sortedUser){
+
+
+                    $sortedUser->gameweeks()->updateExistingPivot($gameweek->id,['rank'=>$rnkCnt],false);
+                    $rnkCnt++;
+
+            }
+                    $sortedUsers = $users->sortByDesc('monthScore');
+
+            $rnkCnt = 1;
+
+            foreach($sortedUsers as $sortedUser){
+
+                    $sortedUser->months()->updateExistingPivot($month->id,['rank'=>$rnkCnt],false);
+                    $rnkCnt++;
+
+            }
+
+                    $sortedUsers = $users->sortByDesc('score');
+
+            $rnkCnt = 1;
+
+            foreach($sortedUsers as $sortedUser){
+
+                    $sortedUser->rank = $rnkCnt;
+                    unset($sortedUser->gameweekScore);
+                    unset($sortedUser->monthScore);
+                    $sortedUser->save();
+                    $rnkCnt++;
+
+            }
+
+            return redirect('/admin/gameweek');
     }
 }
