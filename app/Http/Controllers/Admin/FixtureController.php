@@ -44,18 +44,32 @@ class FixtureController extends Controller
     {
 
             $fixture = new Fixture;
+            $home_score = $request->home_score;
+            $away_score = $request->away_score;
+            dd($home_score === "0" || $home_score);
+
             $fixture->home_club_id = $request->home_club_id;
             $fixture->away_club_id = $request->away_club_id;
-            if(empty($request->home_score)){
-                    $fixture->home_score = null;
+
+            $homeScoreSet = false;
+            if($home_score === "0" || $home_score){
+                    $homeScoreSet = true;
+                    $fixture->home_score = $home_score;
             }else{
-                    $fixture->home_score = $request->home_score;
+                    $fixture->home_score = null;
             }
 
-            if(empty($request->away_score)){
-                    $fixture->away_score = null;
+            $awayScoreSet = false;
+
+            if($away_score === "0" || $away_score){
+                    $awayScoreSet = true;
+                    $fixture->away_score = $away_score;
             }else{
-                    $fixture->away_score = $request->away_score;
+                    $fixture->away_score = null;
+            }
+
+            if($homeScoreSet and $awayScoreSet){
+                $fixture->over = true;
             }
             $fixture->gameweek_id = $request->gameweek_id;
             $fixture->kickoff   = $request->kickoff;
@@ -63,7 +77,6 @@ class FixtureController extends Controller
             $fixture->save();
 
             return redirect('/admin/gameweek/'.$fixture->gameweek_id);
-
     }
 
     /**
@@ -98,9 +111,43 @@ class FixtureController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(FixtureRequest $request, $id)
     {
-        //
+            $fixture = Fixture::findOrFail($id);
+
+            $home_score = $request->home_score;
+            $away_score = $request->away_score;
+            dd($home_score === "0" || $home_score);
+
+            $fixture->home_club_id = $request->home_club_id;
+            $fixture->away_club_id = $request->away_club_id;
+
+            $homeScoreSet = false;
+            if($home_score === "0" || $home_score){
+                    $homeScoreSet = true;
+                    $fixture->home_score = $home_score;
+            }else{
+                    $fixture->home_score = null;
+            }
+
+            $awayScoreSet = false;
+
+            if($away_score === "0" || $away_score){
+                    $awayScoreSet = true;
+                    $fixture->away_score = $away_score;
+            }else{
+                    $fixture->away_score = null;
+            }
+
+            if($homeScoreSet and $awayScoreSet){
+                $fixture->over = true;
+            }
+            $fixture->gameweek_id = $request->gameweek_id;
+            $fixture->kickoff   = $request->kickoff;
+
+            $fixture->save();
+
+            return redirect('/admin/gameweek/'.$fixture->gameweek_id);
     }
 
     /**
