@@ -117,7 +117,6 @@ class FixtureController extends Controller
 
             $home_score = $request->home_score;
             $away_score = $request->away_score;
-            dd($home_score === "0" || $home_score);
 
             $fixture->home_club_id = $request->home_club_id;
             $fixture->away_club_id = $request->away_club_id;
