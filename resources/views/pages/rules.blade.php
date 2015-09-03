@@ -52,6 +52,12 @@
                     </tr>
 
                     <tr>
+                            <td>Correctly Predicted Result</td>
+                            <td>The winner was correctly predicted.</td>
+                            <td>5</td>
+                    </tr>
+
+                    <tr>
                             <td>Prediction Made</td>
                             <td>Point awarded for simply making a prediction</td>
                             <td>2</td>
