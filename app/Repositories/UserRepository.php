@@ -8,17 +8,21 @@ class UserRepository
 {
         public function findByUserNameOrCreate($userData,$provider=null)
         {
+
+                if(empty($userData->email)){
+                        $userData->email = 'fb'.$userData->id.'@facebook.com';
+                }
+
                 $user = User::where('email','=',$userData->email)->first();
 
-                //TODO Replace randomstr with a real random string
-                //
+                $randomString = str_random(40);
 
                 if(!$user){
                         $user = User::create([
                                 'name'=>$userData->name,
                                 'email'=>$userData->email,
                                 'username'=>null,
-                                'password'=>\Hash::make('randomstr'),
+                                'password'=>\Hash::make($randomString),
                                 'status'=>0,
                                 'provider'=>$provider,
                                 'provider_id'=>$userData->id,
