@@ -5,6 +5,11 @@
 
 }
 
+.colorred
+{
+ color: #D9411E;
+}
+
 .font
 {
 font-family: 'Source Sans Pro', sans-serif;
@@ -367,6 +372,7 @@ color: #D9411E;
   text-align:center;
   background-color:#333333;
   padding: 10px;
+  height: 220px;
 }
 
 .badgespan

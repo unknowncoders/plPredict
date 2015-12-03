@@ -51,7 +51,7 @@
                                         <?php $pred = $fixture->predictions()->where('user_id',$user->id)->first(); ?>
 
                                     @if( $boostId == $fixture->id)
-                                        <span class="colorwhite"> Boosted !! </span>
+                                        <span class="colorred"> Boosted !! </span>
                                     @endif
                                      
                                         <span class="badge predictscore"> 

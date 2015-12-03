@@ -1,12 +1,14 @@
 <div class="col-xs-12   col-sm-3 col-md-2 col-lg-2  userinfo  ">
-              <img class="img-responsive img-circle" src="{{ URL::asset('image/Soccer.png') }}" alt="coming"></img> 
-            
-               @if ($user->club)
-                    {{ $user->club->fanPic->path }}
+              <img class="img-responsive img-circle" src=
+
+           @if ($user->club)
+                   ../{{ $user->club->fanPic->path }}
                 @else
-                    {{ \App\Pic::find(1)->path }}
+                   ../ {{ \App\Pic::find(1)->path }}
                     @endif
 
+           alt="coming"></img> 
+            
         <strong>  
               <div class="userpara"> <p><strong><a href="{{ url('/users',$user->username) }}" class="userlink">{{ $user->name }}</a></p>
                <p> (<a href="{{ url('/users',$user->username) }}" class="userlink">{{ $user->username }}</a>)</p>

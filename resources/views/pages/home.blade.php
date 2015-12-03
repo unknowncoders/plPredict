@@ -8,7 +8,18 @@
 
     @include('partials.profbox')
 
+<div class ="col-xs-12 col-sm-8 col-lg-9 col-md-9 thumbnail gameweekbox">
 
+
+//this create the problem when there is only the last gameweek;
+ <ul class ="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#predictions" class="showtabs">Gameweek {{ $gws[0]->id }}</a></li>
+        <li><a data-toggle="tab" href="#badges" class="showtabs">Gameweek {{ $gws[1]->id }}</a></li>
+ </ul>
+
+</div>
+
+<!--
     @foreach ($gws as $gw)
         
         <div class="col-xs-12  col-sm-8 col-md-9 col-lg-9 predictinfo ">
@@ -124,3 +135,4 @@
         @endforeach
 
 @stop
+-->
