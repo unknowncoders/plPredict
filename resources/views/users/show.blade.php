@@ -144,7 +144,7 @@
                                     <tr> 
                                         <td style="border: 1px solid #333333">     <p><a href="/users/{{$user->username}}/gameweek/{{$gameweek->id}}" class="gameweeklink">Gameweek {{$gameweek->id}}</a>
                                     <?php $userGameweek = $gameweek->predictors()->where('user_id',$user->id)->first(); ?>
-                                               &nbsp <span class="badge"> @if ($userGameweek) {{ $userGameweek->pivot->score }} @else - @endif </span></p>
+                                               &nbsp <span class="badge"> @if ($userGameweek) {{ $userGameweek->pivot->score }} @else 0  @endif </span></p>
                                          </td> 
                                       </tr>         
                                     @endforeach

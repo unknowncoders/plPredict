@@ -24,14 +24,13 @@
 
                 <div class="col-sm-5 col-md-5 col-lg-3 thumbnail badgesbox">
                
-                   {{$badge->icon_path}}
                    
                    @if ($badge->users()->where('user_id',$user->id)->count()!=0)
                       <i class="fa fa-star fa-2x badgestar"></i>
                     @endif
 
 
-                 <h3 class="badgetext">     <img class="img-circle" width="60" height="60" src="{{ URL::asset('image/Soccer.png') }}" alt="coming"></img> 
+                 <h3 class="badgetext">     <img class="img-circle" width="60" height="60" src={{$badge->icon_path }} alt="coming"></img> 
                 
                  {{ $badge->name }}
 
