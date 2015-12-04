@@ -183,6 +183,10 @@ margin-top:4px;
 .predictdata
 {
   display: inline;
+  background-color: #75A3D1;
+  padding: 5px;
+  border-radius: 5px;
+
 }
 
 .predictresult
@@ -440,3 +444,20 @@ color: #D9411E;
 
         color:#FFFFFF;
 }
+
+.boost
+{
+ color: #333333;
+ text-align:left;
+}
+
+.boostfield
+{
+ float:right;
+}
+
+.predictsave
+{
+  margin-right: 4%;
+  float:right; 
+ }
